@@ -1,45 +1,31 @@
-'use client'
+'use client';
 
-import React, { use } from 'react'
+import React, { use } from 'react';
 
-import { useEffect, useState } from 'react';
+import { Box, Flex, Text, Image, Grid, GridItem, Link } from '@chakra-ui/react';
 
-
-
- function LatestWork() {
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-
-    async function getData() {
-      const res = await fetch('http://localhost:5000/api/v1/project');
-    
-      // if (!res.ok) {
-      //   throw new Error('Failed to fetch resources');
-      // }
-
-     const data =  await res.json()
-     setData(data);
-
-    }
-    getData();
-    }, [])
-
+function LatestWork({project} : any) {
 
 
   return (
-    <div>
-      {data.map(work => <div>{work.title} {work.description}
-      {
-        work.image && 
-      <img src={`http://localhost:5000/${work.image}`} />
-      
-      }
-      
-       </div>)}
-    </div>
-  )
+        <GridItem>
+          <Link _hover={{textDecoration : 'none'}} isExternal href={project.link}>
+            <Flex direction="column" align="center" padding="1rem 0">
+              {project.image && (
+                <Image
+                  borderRadius="16px"
+                  maxH="150px"
+                  src={`http://localhost:5000/${project.image}`}
+                />
+              )}
+              <Text fontSize="2xl" fontWeight="bold">
+                {project.title}
+              </Text>
+              <Text>{project.description}</Text>
+            </Flex>
+          </Link>
+        </GridItem>
+  );
 }
 
-
-export default LatestWork
+export default LatestWork;

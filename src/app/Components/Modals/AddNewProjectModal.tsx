@@ -17,7 +17,8 @@ ReactModal.setAppElement('#root');
 
 const customStyles = {
   content: {
-    top: '50%',
+    width: '50%',
+        top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
@@ -27,13 +28,16 @@ const customStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '1rem',
-  },
-};
+  } ,
+} ;
 
 function LoginModal({ modalIsOpen, closeModal }: any ) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
+  const [link, setLink] = useState('');
+  const [stack, setStack] = useState('');
+  const [version, setVersion] = useState('');
+  const [image, setImage] = useState<any>('');
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -43,6 +47,9 @@ function LoginModal({ modalIsOpen, closeModal }: any ) {
     formData.append('title', title);
     formData.append('description', description);
     formData.append('image', image);
+    formData.append('link', link);
+    formData.append('stack', stack);
+    formData.append('version', version);
 
     fetch('http://localhost:5000/api/v1/project', {
       method: 'POST',
@@ -59,16 +66,16 @@ function LoginModal({ modalIsOpen, closeModal }: any ) {
 
   return (
     <>
-      <ReactModal isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <ReactModal style={customStyles} isOpen={modalIsOpen} onRequestClose={closeModal}>
         <CloseButton alignSelf="end" onClick={closeModal}></CloseButton>
-        <form action="/api/v1/project" method="post">
+
           <FormControl
             isInvalid={isError}
             display="flex"
             flexDir="column"
             alignItems="center"
           >
-            <FormLabel fontSize="2rem">Title</FormLabel>
+            <FormLabel >Title</FormLabel>
             <Input
               onChange={(e) => {
                 setTitle(e.target.value);
@@ -76,7 +83,6 @@ function LoginModal({ modalIsOpen, closeModal }: any ) {
               }}
               type="text"
               name="title"
-              fontSize="1.8rem"
             />
             {isError && (
               <FormErrorMessage fontSize="1.4rem">
@@ -90,14 +96,13 @@ function LoginModal({ modalIsOpen, closeModal }: any ) {
             flexDir="column"
             alignItems="center"
           >
-            <FormLabel fontSize="2rem">description</FormLabel>
+            <FormLabel>description</FormLabel>
             <Input
               onChange={(e) => {
                 setDescription(e.target.value);
                 setIsError(false);
               }}
               type="text"
-              fontSize="1.8rem"
             />
             {isError && (
               <FormErrorMessage fontSize="1.4rem">
@@ -112,7 +117,70 @@ function LoginModal({ modalIsOpen, closeModal }: any ) {
             flexDir="column"
             alignItems="center"
           >
-            <FormLabel fontSize="2rem">Image</FormLabel>
+            <FormLabel>Link</FormLabel>
+            <Input
+              onChange={(e) => {
+                setLink(e.target.value);
+                setIsError(false);
+              }}
+              type="text"
+            />
+            {isError && (
+              <FormErrorMessage fontSize="1.4rem">
+                Please enter a link.
+              </FormErrorMessage>
+            )}
+          </FormControl>
+
+          <FormControl
+            isInvalid={isError}
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+          >
+            <FormLabel>Stack</FormLabel>
+            <Input
+              onChange={(e) => {
+                setStack(e.target.value);
+                setIsError(false);
+              }}
+              type="text"
+            />
+            {isError && (
+              <FormErrorMessage fontSize="1.4rem">
+                Please enter the stack.
+              </FormErrorMessage>
+            )}
+          </FormControl>
+
+          <FormControl
+            isInvalid={isError}
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+          >
+            <FormLabel >Version</FormLabel>
+            <Input
+              onChange={(e) => {
+                setVersion(e.target.value);
+                setIsError(false);
+              }}
+              type="text"
+            />
+            {isError && (
+              <FormErrorMessage fontSize="1.4rem">
+                Please enter the version.
+              </FormErrorMessage>
+            )}
+          </FormControl>
+
+          <FormControl
+            isInvalid={isError}
+            display="flex"
+            flexDir="column"
+            alignItems="center"
+          >
+            <FormLabel >Image</FormLabel>
             <Input
               onChange={(e) => {
                 setImage(e.target.files[0]);
@@ -120,7 +188,6 @@ function LoginModal({ modalIsOpen, closeModal }: any ) {
               }}
               type="file"
               name="image"
-              fontSize="1.8rem"
             />
             {isError && (
               <FormErrorMessage fontSize="1.4rem">
@@ -143,17 +210,16 @@ function LoginModal({ modalIsOpen, closeModal }: any ) {
             ) : (
               <Button
                 onClick={submitForm}
-                size="lg"
+                size="md"
                 bg="#25a473"
                 _hover={{ bg: '#17845c' }}
               >
-                <Text color="#fff" fontSize="1.8rem" p="2rem">
-                  Log In
+                <Text color="#fff"  p="1rem">
+                  Submit
                 </Text>
               </Button>
             )}
           </FormControl>
-        </form>
       </ReactModal>
     </>
   );
