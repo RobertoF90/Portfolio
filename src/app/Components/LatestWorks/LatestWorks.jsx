@@ -6,12 +6,11 @@ import LatestWork from './Components/LatestWork';
 
 import { Button, Text, Grid, Flex } from '@chakra-ui/react';
 
-import AddNewProjectModal from './../Modals/AddNewProjectModal';
+import AddNewProjectModal from '../Modals/AddNewProjectModal';
 
 function LatestWorks() {
   const [loading, setLoading] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
-  
 
   function openModal() {
     setIsOpen(true);
@@ -21,17 +20,19 @@ function LatestWorks() {
     setIsOpen(false);
   }
 
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
     async function getData() {
       setLoading(true);
 
-      const res = await fetch('http://localhost:5000/api/v1/project');
+      const res = await fetch(
+        'https://roberto-portfolio.cyclic.cloud/api/v1/project'
+      );
 
-      // if (!res.ok) {
-      //   throw new Error('Failed to fetch resources');
-      // }
+      if (!res.ok) {
+        throw new Error('Failed to fetch resources');
+      }
 
       const data = await res.json();
       setProjects(data);
@@ -41,14 +42,24 @@ function LatestWorks() {
   }, []);
 
   return (
-    <Flex align="center" justify='center'>
-      {loading ? <Text>LOADING</Text> :
-      <Grid templateColumns="1fr 1fr" justifyItems="center" padding="2rem 20%">
-        {projects.reverse().map((project) => (
-          <LatestWork project={project} />
+    <Flex
+      direction={{ base: 'column', lg: 'row' }}
+      align="center"
+      justify="center"
+    >
+      {loading ? (
+        <Text>LOADING</Text>
+      ) : (
+        <Grid
+          templateColumns={{ base: '1fr', md: '1fr 1fr' }}
+          justifyItems="center"
+          padding="2rem "
+        >
+          {projects.reverse().map((project) => (
+            <LatestWork project={project} />
           ))}
-      </Grid>
-        }
+        </Grid>
+      )}
       <AddNewProjectModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
 
       <Button onClick={openModal}>

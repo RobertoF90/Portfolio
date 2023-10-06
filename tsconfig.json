@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Components/Modals/AddNewProjectModal.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/Components/Modals/AddNewProjectModal.jsx", "src/app/Components/LatestWorks/LatestWorks.jsx", "src/app/Components/LatestWorks/Components/LatestWork.jsx", "src/app/Components/Header/Header.jsx", "src/app/Components/Navigation.jsx", "src/app/layout.jsx", "src/app/Components/Header/Components/SocialIcon.jsx", "src/pages/_app.jsx"],
   "exclude": ["node_modules"]
 }
