@@ -55,8 +55,8 @@ function LatestWorks() {
           justifyItems="center"
           padding="2rem "
         >
-          {projects.reverse().map((project) => (
-            <LatestWork project={project} />
+          {projects.reverse().map((project, i) => (
+            <LatestWork key={i} project={project} />
           ))}
         </Grid>
       )}

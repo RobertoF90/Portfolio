@@ -32,25 +32,41 @@ function Header() {
       </Flex>
       <Container maxW="4xl" textAlign="center">
         <Text fontSize="lg">
-          I'm a full-stack developer based in Lecce (Italy) with a passion for
-          languages and technology. I love all things tech related and enjoy
+          I&apos;m a full-stack developer based in Lecce (Italy) with a passion
+          for languages and technology. I love all things tech related and enjoy
           expressing my creativity through the creation of web applications and
-          videogames.{' '}
+          videogames.
         </Text>
       </Container>
 
-      <Container  textAlign="center" py="1rem">
-        <Text transition="all 0.2s" _hover={{cursor: "pointer", transform: "scale(1.1)"}} fontSize="xl">
-          I'm open to freelance work! Feel free to get in touch!
+      <Container textAlign="center" py="1rem">
+        <Text
+          transition="all 0.2s"
+          _hover={{ cursor: 'pointer', transform: 'scale(1.1)' }}
+          fontSize="xl"
+        >
+          I&apos;m open to freelance work! Feel free to get in touch!
         </Text>
       </Container>
 
       <Container>
         <Flex justify="center" gap="2rem" fontSize="2xl">
-          <SocialIcon icon={<FaGithub />} link='https://github.com/RobertoF90' />
-          <SocialIcon icon={<FaTwitter />} link='https://twitter.com/RFrancoDev' />
-          <SocialIcon icon={<FaLinkedin />} link="https://www.linkedin.com/in/roberto-franco-2bb321116/" />
-          <SocialIcon icon={<FaInstagram />} link="https://www.instagram.com/robertofranco.dev/" />
+          <SocialIcon
+            icon={<FaGithub />}
+            link="https://github.com/RobertoF90"
+          />
+          <SocialIcon
+            icon={<FaTwitter />}
+            link="https://twitter.com/RFrancoDev"
+          />
+          <SocialIcon
+            icon={<FaLinkedin />}
+            link="https://www.linkedin.com/in/roberto-franco-2bb321116/"
+          />
+          <SocialIcon
+            icon={<FaInstagram />}
+            link="https://www.instagram.com/robertofranco.dev/"
+          />
         </Flex>
       </Container>
     </Box>
