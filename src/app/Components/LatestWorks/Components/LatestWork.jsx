@@ -10,11 +10,7 @@ function LatestWork({ project }) {
       <Link _hover={{ textDecoration: 'none' }} isExternal href={project.link}>
         <Flex direction="column" align="center" padding="1rem 0">
           {project.image && (
-            <Image
-              borderRadius="16px"
-              maxH="150px"
-              src={`https://roberto-portfolio.cyclic.cloud/${project.image}`}
-            />
+            <Image borderRadius="16px" maxH="150px" src={project.image} />
           )}
           <Text textAlign="center" fontSize="2xl" fontWeight="bold">
             {project.title}

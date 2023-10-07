@@ -26,9 +26,7 @@ function LatestWorks() {
     async function getData() {
       setLoading(true);
 
-      const res = await fetch(
-        'https://roberto-portfolio.cyclic.cloud/api/v1/project'
-      );
+      const res = await fetch('http://localhost:5000/api/v1/project');
 
       if (!res.ok) {
         throw new Error('Failed to fetch resources');

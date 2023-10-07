@@ -71,7 +71,7 @@ function LoginModal({ modalIsOpen, closeModal }) {
     //   body: formData,
     // });
 
-    fetch('https://roberto-portfolio.cyclic.cloud/api/v1/project', {
+    fetch('http://localhost:5000/api/v1/project', {
       method: 'POST',
       mode: 'no-cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

@@ -12,7 +12,7 @@ import Header from './Components/Navigation';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <div id="root"></div>
         <Providers>
           <Header />
