@@ -31,7 +31,7 @@ const customStyles = {
   },
 };
 
-function LoginModal({ modalIsOpen, closeModal }) {
+function AddNewProjectModal({ modalIsOpen, closeModal }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
@@ -50,26 +50,6 @@ function LoginModal({ modalIsOpen, closeModal }) {
     formData.append('link', link);
     formData.append('stack', stack);
     formData.append('version', version);
-    console.log(formData);
-
-    // fetch('https://roberto-portfolio.cyclic.cloud/api/v1/project', {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     // 'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   method: 'POST',
-    //   body: formData,
-    // });
-
-    // fetch('http://localhost:5000/api/v1/project', {
-    //   method: 'POST',
-    //   mode: 'no-cors', // no-cors, *cors, same-origin
-    //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    //   credentials: 'same-origin', // include, *same-origin, omit
-    //   headers: { 'Content-Type': 'multipart/form-data' },
-    //   // body: JSON.stringify({ title, description }), THIS WORKS
-    //   body: formData,
-    // });
 
     fetch('http://localhost:5000/api/v1/project', {
       method: 'POST',
@@ -82,6 +62,10 @@ function LoginModal({ modalIsOpen, closeModal }) {
       },
       body: formData,
     });
+
+    closeModal();
+
+    window.location.reload();
   };
 
   return (
@@ -120,7 +104,7 @@ function LoginModal({ modalIsOpen, closeModal }) {
           flexDir="column"
           alignItems="center"
         >
-          <FormLabel>description</FormLabel>
+          <FormLabel>Description</FormLabel>
           <Input
             onChange={(e) => {
               setDescription(e.target.value);
@@ -249,4 +233,4 @@ function LoginModal({ modalIsOpen, closeModal }) {
   );
 }
 
-export default LoginModal;
+export default AddNewProjectModal;

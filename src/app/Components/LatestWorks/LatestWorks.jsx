@@ -58,7 +58,11 @@ function LatestWorks() {
           ))}
         </Grid>
       )}
-      <AddNewProjectModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <AddNewProjectModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        setProjects={setProjects}
+      />
 
       <Button onClick={openModal}>
         <Text>Add New</Text>

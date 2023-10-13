@@ -1,6 +1,6 @@
 'use client';
 
-import React, { use } from 'react';
+import React from 'react';
 
 import { Box, Flex, Text, Image, Grid, GridItem, Link } from '@chakra-ui/react';
 
