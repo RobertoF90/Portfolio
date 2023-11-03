@@ -5,7 +5,7 @@ import LatestWorks from './Components/LatestWorks/LatestWorks';
 import GetInTouch from './Components/GetInTouch/GetInTouch';
 import Footer from './Components/Footer';
 
-async function page({ user }) {
+async function page() {
   return (
     <div>
       <Header />
