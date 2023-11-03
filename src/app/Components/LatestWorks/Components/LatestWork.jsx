@@ -19,7 +19,7 @@ function LatestWork({ project }) {
       <Link _hover={{ textDecoration: 'none' }} isExternal href={project.link}>
         <Flex direction="column" align="center" py="4">
           {project.image && (
-            <Image borderRadius="16px" maxH="150" src={project.image} />
+            <Image borderRadius="16px" maxH="150" src={project.image} alt="" />
           )}
           <Heading textAlign="center" fontSize="2xl">
             {project.title}
