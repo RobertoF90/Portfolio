@@ -9,7 +9,7 @@ function GetInTouch() {
   return (
     <Flex pb={{ base: '6', lg: '12' }} direction="column" align="center">
       <Heading>Get in touch!</Heading>
-      <Text>Let's work together on a project!</Text>
+      <Text>Let&apos;s work together on a project!</Text>
       <Form />
     </Flex>
   );

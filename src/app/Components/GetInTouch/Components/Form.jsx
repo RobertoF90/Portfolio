@@ -64,7 +64,7 @@ function Form() {
           <FormLabel textAlign="center">Email Address</FormLabel>
           <Input type="email" name="Email" />
           <FormHelperText>
-            I'll never share you email with anyone.
+            I&apos;ll never share you email with anyone.
           </FormHelperText>
         </FormControl>
         <FormControl isRequired>
@@ -73,13 +73,13 @@ function Form() {
         </FormControl>
 
         {!formSent && !loading ? (
-          <Button colorScheme="blue" type="submit" w="25%">
-            <Text color="#fff">Invia</Text>
+          <Button colorScheme="blue" type="submit">
+            <Text color="#fff">Send!</Text>
           </Button>
         ) : loading ? (
-          <Button w="60%" isLoading loadingText="sending"></Button>
+          <Button isLoading loadingText="sending"></Button>
         ) : (
-          <Button colorScheme="blue" w="25%">
+          <Button colorScheme="blue">
             <Text color="#fff">Sent</Text>
           </Button>
         )}
