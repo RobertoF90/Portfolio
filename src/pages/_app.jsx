@@ -1,4 +1,3 @@
-import Header from '@/app/Components/Navigation';
 import { ChakraProvider } from '@chakra-ui/react';
 
 import { ReactNode } from 'react';

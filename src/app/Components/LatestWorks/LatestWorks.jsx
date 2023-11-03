@@ -4,11 +4,14 @@ import { useState, useEffect } from 'react';
 
 import LatestWork from './Components/LatestWork';
 
-import { Button, Text, Grid, Flex } from '@chakra-ui/react';
+import { Button, Text, Grid, Flex, Heading } from '@chakra-ui/react';
 
 import AddNewProjectModal from '../Modals/AddNewProjectModal';
 
+import { useSession } from 'next-auth/react';
+
 function LatestWorks() {
+  const { data } = useSession();
   const [loading, setLoading] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -41,6 +44,7 @@ function LatestWorks() {
 
   return (
     <Flex
+      p={{ base: '6', lg: '12' }}
       direction={{ base: 'column', lg: 'row' }}
       align="center"
       justify="center"
@@ -48,15 +52,18 @@ function LatestWorks() {
       {loading ? (
         <Text>LOADING</Text>
       ) : (
-        <Grid
-          templateColumns={{ base: '1fr', md: '1fr 1fr' }}
-          justifyItems="center"
-          padding="2rem "
-        >
-          {projects.reverse().map((project, i) => (
-            <LatestWork key={i} project={project} />
-          ))}
-        </Grid>
+        <Flex direction="column" align="center">
+          <Heading>Latest Works</Heading>
+          <Grid
+            templateColumns={{ base: '1fr', md: '1fr 1fr' }}
+            justifyItems="center"
+            padding="2 "
+          >
+            {projects.reverse().map((project, i) => (
+              <LatestWork key={i} project={project} />
+            ))}
+          </Grid>
+        </Flex>
       )}
       <AddNewProjectModal
         modalIsOpen={modalIsOpen}
@@ -64,9 +71,11 @@ function LatestWorks() {
         setProjects={setProjects}
       />
 
-      <Button onClick={openModal}>
-        <Text>Add New</Text>
-      </Button>
+      {data && (
+        <Button onClick={openModal}>
+          <Text>Edit</Text>
+        </Button>
+      )}
     </Flex>
   );
 }
