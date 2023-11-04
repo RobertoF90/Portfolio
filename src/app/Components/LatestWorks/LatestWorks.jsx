@@ -10,6 +10,8 @@ import AddNewProjectModal from '../Modals/AddNewProjectModal';
 
 import { useSession } from 'next-auth/react';
 
+import { API_URL } from './../../utils';
+
 function LatestWorks() {
   const { data } = useSession();
   const [loading, setLoading] = useState(true);
@@ -29,7 +31,7 @@ function LatestWorks() {
     async function getData() {
       setLoading(true);
 
-      const res = await fetch('http://localhost:5000/api/v1/project');
+      const res = await fetch(`${API_URL}/api/v1/project`);
 
       if (!res.ok) {
         throw new Error('Failed to fetch resources');

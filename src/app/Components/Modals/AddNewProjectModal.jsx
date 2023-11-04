@@ -2,6 +2,8 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import { useState } from 'react';
 
+import { API_URL } from '@/app/utils';
+
 import {
   CloseButton,
   Button,
@@ -51,7 +53,7 @@ function AddNewProjectModal({ modalIsOpen, closeModal }) {
     formData.append('stack', stack);
     formData.append('version', version);
 
-    fetch('http://localhost:5000/api/v1/project', {
+    fetch(`${API_URL}/api/v1/project`, {
       method: 'POST',
       mode: 'no-cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

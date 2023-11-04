@@ -1,5 +1,6 @@
 import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { API_URL } from '@/app/utils';
 
 export const authOptions = {
   providers: [
@@ -23,7 +24,7 @@ export const authOptions = {
       },
       async authorize(credentials) {
         // https://next-auth.js.org/configuration/providers/credentials
-        const response = await fetch('http://localhost:5000/api/v1/user', {
+        const response = await fetch(`${API_URL}/api/v1/user`, {
           method: 'POST',
           mode: 'no-cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
