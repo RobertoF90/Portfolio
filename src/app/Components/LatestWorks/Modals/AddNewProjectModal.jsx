@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { API_URL } from '@/app/utils';
 
 import {
+  Flex,
   CloseButton,
   Button,
   Text,
@@ -13,6 +14,8 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  RadioGroup,
+  Radio,
 } from '@chakra-ui/react';
 
 ReactModal.setAppElement('#root');
@@ -34,11 +37,13 @@ const customStyles = {
 };
 
 function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
+  const [type, setType] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
   const [stack, setStack] = useState('');
   const [version, setVersion] = useState('');
+  const [published, setPublished] = useState('');
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -46,12 +51,14 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
   const submitForm = () => {
     const formData = new FormData();
 
+    formData.append('type', type);
     formData.append('title', title);
     formData.append('description', description);
     formData.append('image', image);
     formData.append('link', link);
     formData.append('stack', stack);
     formData.append('version', version);
+    formData.append('published', published);
 
     fetch(`${API_URL}/api/v1/project`, {
       method: 'POST',
@@ -85,6 +92,26 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
           flexDir="column"
           alignItems="center"
         >
+          <FormLabel>Type</FormLabel>
+          <RadioGroup onChange={setType}>
+            <Flex gap="4">
+              <Radio value="website">Website</Radio>
+              <Radio value="application">Application</Radio>
+            </Flex>
+          </RadioGroup>
+          {isError && (
+            <FormErrorMessage fontSize="lg">
+              Please enter your title address.
+            </FormErrorMessage>
+          )}
+        </FormControl>
+
+        <FormControl
+          isInvalid={isError}
+          display="flex"
+          flexDir="column"
+          alignItems="center"
+        >
           <FormLabel>Title</FormLabel>
           <Input
             onChange={(e) => {
@@ -95,7 +122,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             name="title"
           />
           {isError && (
-            <FormErrorMessage fontSize="1.4rem">
+            <FormErrorMessage fontSize="lg">
               Please enter your title address.
             </FormErrorMessage>
           )}
@@ -115,7 +142,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             type="text"
           />
           {isError && (
-            <FormErrorMessage fontSize="1.4rem">
+            <FormErrorMessage fontSize="lg">
               Please enter your description.
             </FormErrorMessage>
           )}
@@ -136,7 +163,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             type="text"
           />
           {isError && (
-            <FormErrorMessage fontSize="1.4rem">
+            <FormErrorMessage fontSize="lg">
               Please enter a link.
             </FormErrorMessage>
           )}
@@ -157,7 +184,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             type="text"
           />
           {isError && (
-            <FormErrorMessage fontSize="1.4rem">
+            <FormErrorMessage fontSize="lg">
               Please enter the stack.
             </FormErrorMessage>
           )}
@@ -178,7 +205,22 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             type="text"
           />
           {isError && (
-            <FormErrorMessage fontSize="1.4rem">
+            <FormErrorMessage fontSize="lg">
+              Please enter the version.
+            </FormErrorMessage>
+          )}
+        </FormControl>
+
+        <FormControl
+          isInvalid={isError}
+          display="flex"
+          flexDir="column"
+          alignItems="center"
+        >
+          <FormLabel>Published</FormLabel>
+          <Input onChange={setPublished} type="datetime-local" />
+          {isError && (
+            <FormErrorMessage fontSize="lg">
               Please enter the version.
             </FormErrorMessage>
           )}
@@ -200,7 +242,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             name="image"
           />
           {isError && (
-            <FormErrorMessage fontSize="1.4rem">
+            <FormErrorMessage fontSize="lg">
               Please enter your image.
             </FormErrorMessage>
           )}
@@ -210,7 +252,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
           {loading ? (
             <Button
               size="lg"
-              fontSize="1.8rem"
+              fontSize="lg"
               color="#fff"
               bg="#25a473"
               _hover={{ bg: '#17845c' }}
@@ -224,7 +266,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
               bg="#25a473"
               _hover={{ bg: '#17845c' }}
             >
-              <Text color="#fff" p="1rem">
+              <Text color="#fff" p="lg">
                 Submit
               </Text>
             </Button>

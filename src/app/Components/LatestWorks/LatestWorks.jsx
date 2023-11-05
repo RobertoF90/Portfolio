@@ -1,6 +1,5 @@
 'use client';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, React } from 'react';
 
 import LatestWork from './Components/LatestWork';
 
@@ -12,9 +11,9 @@ import { useSession } from 'next-auth/react';
 
 import { API_URL } from './../../utils';
 
-function LatestWorks() {
+function LatestWorks({ projects }) {
   const { data } = useSession();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [addModalIsOpen, setaddIsOpen] = useState(false);
 
   function openAddModal() {
@@ -24,25 +23,6 @@ function LatestWorks() {
   function closeAddModal() {
     setaddIsOpen(false);
   }
-
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    async function getData() {
-      setLoading(true);
-
-      const res = await fetch(`${API_URL}/api/v1/project`);
-
-      if (!res.ok) {
-        throw new Error('Failed to fetch resources');
-      }
-
-      const data = await res.json();
-      setProjects(data);
-      setLoading(false);
-    }
-    getData();
-  }, []);
 
   return (
     <Flex
@@ -67,7 +47,7 @@ function LatestWorks() {
             justifyItems="center"
             padding="6"
           >
-            {projects.reverse().map((project, i) => (
+            {projects.map((project, i) => (
               <LatestWork
                 key={i}
                 project={project}
@@ -81,7 +61,7 @@ function LatestWorks() {
       <AddNewProjectModal
         addModalIsOpen={addModalIsOpen}
         closeAddModal={closeAddModal}
-        setProjects={setProjects}
+        // setProjects={setProjects}
       />
     </Flex>
   );

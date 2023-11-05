@@ -1,7 +1,8 @@
-import React from 'react';
+import { React } from 'react';
 
 import Header from './Components/Header/Header';
-import LatestWorks from './Components/LatestWorks/LatestWorks';
+// import LatestWorks from './Components/LatestWorks/LatestWorks';
+import LatestWorksSection from './Components/LatestWorks/LatestWorksSection';
 import GetInTouch from './Components/GetInTouch/GetInTouch';
 import Footer from './Components/Footer';
 
@@ -9,7 +10,7 @@ async function page() {
   return (
     <div>
       <Header />
-      <LatestWorks />
+      <LatestWorksSection />
       <GetInTouch />
       <Footer />
     </div>

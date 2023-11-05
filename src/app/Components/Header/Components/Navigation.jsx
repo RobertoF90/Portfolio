@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
-import { Box, Flex, Button, Text, Link } from '@chakra-ui/react';
+import { Box, Flex, Button, Text } from '@chakra-ui/react';
+
+import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 
 function Navigation() {
@@ -24,9 +26,11 @@ function Navigation() {
       </Flex>
       <Box>
         <Flex gap="4">
-          <Button>
-            <Text>Websites</Text>
-          </Button>
+          <Link href="/websites">
+            <Button>
+              <Text>Websites</Text>
+            </Button>
+          </Link>
           <Button>
             <Text>Web Apps</Text>
           </Button>

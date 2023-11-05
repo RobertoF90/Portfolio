@@ -35,6 +35,16 @@ const customStyles = {
 function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
   const [isError, setIsError] = useState(false);
 
+  async function handleDelete(title) {
+    await fetch(`${API_URL}/api/v1/project/` + title, {
+      method: 'DELETE',
+    });
+
+    closeSubModal();
+
+    window.location.reload();
+  }
+
   return (
     <>
       <ReactModal
@@ -64,6 +74,12 @@ function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
             </Link>
             <Button>
               <Text>Edit</Text>
+            </Button>
+            <Button
+              colorScheme="red"
+              onClick={() => handleDelete(project.title)}
+            >
+              <Text>Delete</Text>
             </Button>
           </Flex>
         </Flex>
