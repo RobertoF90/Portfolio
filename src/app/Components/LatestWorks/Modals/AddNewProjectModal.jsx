@@ -33,7 +33,7 @@ const customStyles = {
   },
 };
 
-function AddNewProjectModal({ modalIsOpen, closeModal }) {
+function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
@@ -65,7 +65,7 @@ function AddNewProjectModal({ modalIsOpen, closeModal }) {
       body: formData,
     });
 
-    closeModal();
+    closeAddModal();
 
     window.location.reload();
   };
@@ -74,10 +74,10 @@ function AddNewProjectModal({ modalIsOpen, closeModal }) {
     <>
       <ReactModal
         style={customStyles}
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={addModalIsOpen}
+        onRequestClose={closeAddModal}
       >
-        <CloseButton alignSelf="end" onClick={closeModal}></CloseButton>
+        <CloseButton alignSelf="end" onClick={closeAddModal}></CloseButton>
 
         <FormControl
           isInvalid={isError}
