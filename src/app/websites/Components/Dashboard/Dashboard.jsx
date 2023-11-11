@@ -3,16 +3,17 @@ import { useState, React } from 'react';
 
 import Main from './Components/Main';
 import Navigation from './Components/Navigation';
+import { Flex } from '@chakra-ui/react';
 
 function Dashboard({ projects }) {
   const [websites, setWebsites] = useState(projects);
   const [selected, setSelected] = useState(projects[0]);
 
   return (
-    <div style={{ display: 'flex' }}>
-      <Main project={selected} />
+    <Flex direction="column">
       <Navigation projects={projects} setSelected={setSelected} />
-    </div>
+      <Main project={selected} />
+    </Flex>
   );
 }
 
