@@ -3,7 +3,7 @@ import { useState, useEffect, React } from 'react';
 
 import LatestWork from './Components/LatestWork';
 
-import { Button, Text, Grid, Flex, Heading } from '@chakra-ui/react';
+import { Button, Text, Grid, Flex, Heading, Link } from '@chakra-ui/react';
 
 import AddNewProjectModal from './Modals/AddNewProjectModal';
 
@@ -48,13 +48,27 @@ function LatestWorks({ projects }) {
             gap="6"
             justifyItems="center"
           >
-            {projects.map((project, i) => (
-              <LatestWork
-                key={i}
-                project={project}
-                onClick={() => openSubModal()}
-              />
-            ))}
+            {data
+              ? projects.map((project, i) => (
+                  <LatestWork
+                    key={i}
+                    project={project}
+                    onClick={() => data && openSubModal()}
+                  />
+                ))
+              : projects.map((project, i) => (
+                  <Link
+                    key={i}
+                    isExternal
+                    href={project.link}
+                    _hover={{ cursor: 'pointer', textDecoration: 'none' }}
+                  >
+                    <LatestWork
+                      project={project}
+                      onClick={() => data && openSubModal()}
+                    />
+                  </Link>
+                ))}
           </Grid>
         </Flex>
       )}

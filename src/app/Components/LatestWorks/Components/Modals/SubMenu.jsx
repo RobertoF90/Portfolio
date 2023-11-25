@@ -14,6 +14,8 @@ import {
   Image,
 } from '@chakra-ui/react';
 
+import EditProjectModal from './EditProjectModal';
+
 ReactModal.setAppElement('#root');
 
 const customStyles = {
@@ -33,6 +35,15 @@ const customStyles = {
 };
 
 function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
+  const [editModalIsOpen, setEditIsOpen] = useState(false);
+
+  function openEditModal() {
+    setEditIsOpen(true);
+  }
+  function closeEditModal() {
+    setEditIsOpen(false);
+  }
+
   const [isError, setIsError] = useState(false);
 
   async function handleDelete(title) {
@@ -74,7 +85,7 @@ function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
                 <Text>Open</Text>
               </Button>
             </Link>
-            <Button>
+            <Button onClick={openEditModal}>
               <Text>Edit</Text>
             </Button>
             <Button
@@ -86,6 +97,12 @@ function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
           </Flex>
         </Flex>
       </ReactModal>
+
+      <EditProjectModal
+        project={project}
+        editModalIsOpen={editModalIsOpen}
+        closeEditModal={closeEditModal}
+      />
     </>
   );
 }

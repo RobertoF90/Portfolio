@@ -36,15 +36,15 @@ const customStyles = {
   },
 };
 
-function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
+function EditProjectModal({ project, editModalIsOpen, closeEditModal }) {
   const [type, setType] = useState('website');
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [link, setLink] = useState('');
-  const [stack, setStack] = useState('');
-  const [version, setVersion] = useState('');
-  const [published, setPublished] = useState('');
-  const [image, setImage] = useState('');
+  const [title, setTitle] = useState(project.title);
+  const [description, setDescription] = useState(project.description);
+  const [link, setLink] = useState(project.link);
+  const [stack, setStack] = useState(project.stack);
+  const [version, setVersion] = useState(project.version);
+  const [published, setPublished] = useState(Date.now());
+  const [image, setImage] = useState(project.image);
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -60,19 +60,18 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
     formData.append('version', version);
     formData.append('published', published);
 
-    fetch(`${API_URL}/api/v1/project`, {
-      method: 'POST',
-      mode: 'no-cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
+    const o = {};
+    formData.forEach((value, key) => (o[key] = value));
+
+    fetch(`${API_URL}/api/v1/project/${project.title}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/JSON ',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: formData,
+      body: JSON.stringify(o),
     });
 
-    closeAddModal();
+    closeEditModal();
 
     // window.location.reload();
   };
@@ -81,10 +80,10 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
     <>
       <ReactModal
         style={customStyles}
-        isOpen={addModalIsOpen}
-        onRequestClose={closeAddModal}
+        isOpen={editModalIsOpen}
+        onRequestClose={closeEditModal}
       >
-        <CloseButton alignSelf="end" onClick={closeAddModal}></CloseButton>
+        <CloseButton alignSelf="end" onClick={closeEditModal}></CloseButton>
 
         {/* <FormControl
           isInvalid={isError}
@@ -122,6 +121,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             }}
             type="text"
             name="title"
+            value={title}
           />
           {isError && (
             <FormErrorMessage fontSize="lg">
@@ -142,6 +142,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
               setIsError(false);
             }}
             type="text"
+            value={description}
           />
           {isError && (
             <FormErrorMessage fontSize="lg">
@@ -163,6 +164,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
               setIsError(false);
             }}
             type="text"
+            value={link}
           />
           {isError && (
             <FormErrorMessage fontSize="lg">
@@ -184,6 +186,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
                 setIsError(false);
               }}
               type="text"
+              value={stack}
             />
             {isError && (
               <FormErrorMessage fontSize="lg">
@@ -205,6 +208,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
                 setIsError(false);
               }}
               type="text"
+              value={version}
             />
             {isError && (
               <FormErrorMessage fontSize="lg">
@@ -221,7 +225,11 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             alignItems="center"
           >
             <FormLabel>Published</FormLabel>
-            <Input onChange={setPublished} type="datetime-local" />
+            <Input
+              onChange={setPublished}
+              type="datetime-local"
+              value={published}
+            />
             {isError && (
               <FormErrorMessage fontSize="lg">
                 Please enter the version.
@@ -281,4 +289,4 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
   );
 }
 
-export default AddNewProjectModal;
+export default EditProjectModal;

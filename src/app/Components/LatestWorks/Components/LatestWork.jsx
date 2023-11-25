@@ -22,8 +22,8 @@ function LatestWork({ project }) {
   return (
     <GridItem>
       <Flex
-        _hover={{ cursor: 'pointer' }}
-        onClick={openSubModal}
+        _hover={{ cursor: 'pointer', textDecoration: 'none' }}
+        onClick={data && openSubModal}
         direction="column"
         align="center"
         gap={2}
