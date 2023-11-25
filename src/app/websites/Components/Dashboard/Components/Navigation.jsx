@@ -22,7 +22,7 @@ function Navigation({ projects, setSelected }) {
           slidesPerView: 2,
         },
         375: {
-          slidesPerView: 3,
+          slidesPerView: 2,
         },
         480: {
           slidesPerView: 4,

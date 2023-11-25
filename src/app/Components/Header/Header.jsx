@@ -3,7 +3,9 @@ import React from 'react';
 
 import Navigation from './Components/Navigation';
 
-import { Box, Container, Flex, Text, Image, Link } from '@chakra-ui/react';
+import Image from 'next/image';
+
+import { Box, Container, Flex, Text, Link } from '@chakra-ui/react';
 import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import SocialIcon from './Components/SocialIcon';
 
@@ -13,11 +15,11 @@ function Header() {
       <Navigation />
 
       <Flex
-        py="2rem"
+        py={{ base: '2', md: '6' }}
         direction={{ base: 'column', md: 'row' }}
         align="center"
         justifyContent="center"
-        gap="2rem"
+        gap="2"
       >
         <Box textAlign="center">
           <Text fontSize="5xl" fontWeight="bold">
@@ -25,12 +27,12 @@ function Header() {
           </Text>
           <Text fontSize="xl">Full-Stack Web Developer</Text>
         </Box>
-        <Box w="10rem">
+        <Box w="32" borderRadius="50%" overflow="hidden">
           <Image
-            w="100%"
-            borderRadius="50%"
+            width={250}
+            height={259}
             src="/img/profile picture.jpeg"
-            alt=""
+            alt="Profile Picture of Roberto"
           />
         </Box>
       </Flex>

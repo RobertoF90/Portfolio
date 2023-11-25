@@ -9,7 +9,7 @@ import AddNewProjectModal from './Modals/AddNewProjectModal';
 
 import { useSession } from 'next-auth/react';
 
-import { API_URL } from './../../utils';
+import { API_URL } from '../../utils';
 
 function LatestWorks({ projects }) {
   const { data } = useSession();
@@ -26,10 +26,10 @@ function LatestWorks({ projects }) {
 
   return (
     <Flex
-      p={{ base: '6', lg: '12' }}
       direction={{ base: 'column', lg: 'row' }}
       align="center"
       justify="center"
+      pt="6"
     >
       {loading ? (
         <Text>LOADING</Text>
@@ -42,10 +42,11 @@ function LatestWorks({ projects }) {
             </Button>
           )}
           <Grid
-            templateColumns={{ base: '1fr', md: '1fr 1fr' }}
-            gap="4"
+            py="6"
+            px={{ base: '7.5%', sm: '15%', md: '15%', lg: '20%' }}
+            templateColumns={{ base: '1fr', sm: '1fr ', md: '1fr 1fr' }}
+            gap="6"
             justifyItems="center"
-            padding="6"
           >
             {projects.map((project, i) => (
               <LatestWork

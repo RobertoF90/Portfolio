@@ -4,7 +4,7 @@ import LatestWorks from './LatestWorks';
 import { API_URL } from '../../utils';
 
 async function getData() {
-  console.log('getting props');
+  // console.log('getting props');
   //   setLoading(true);
 
   const res = await fetch(`${API_URL}/api/v1/project`);

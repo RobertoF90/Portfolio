@@ -3,8 +3,10 @@
 import { useState, React } from 'react';
 import { useSession } from 'next-auth/react';
 
-import { Flex, Text, Image, GridItem, Link, Heading } from '@chakra-ui/react';
+import { Box, Flex, Text, GridItem, Link, Heading } from '@chakra-ui/react';
 import SubMenuModal from './Modals/SubMenu';
+
+import Image from 'next/image';
 
 function LatestWork({ project }) {
   const { data } = useSession();
@@ -17,22 +19,29 @@ function LatestWork({ project }) {
     setSubIsOpen(false);
   }
 
-  return data ? (
+  return (
     <GridItem>
       <Flex
         _hover={{ cursor: 'pointer' }}
         onClick={openSubModal}
         direction="column"
         align="center"
-        py="4"
+        gap={2}
       >
         {project.image && (
-          <Image borderRadius="16px" maxH="150" src={project.image} alt="" />
+          <Box borderRadius="16px" w="100%" overflow="hidden">
+            <Image
+              width={1920}
+              height={1080}
+              src={project.image}
+              alt="Project image"
+            />
+          </Box>
         )}
-        <Heading textAlign="center" fontSize="2xl">
+        <Heading textAlign="center" fontSize="xl">
           {project.title}
         </Heading>
-        <Text>{project.description}</Text>
+        <Text textAlign="center">{project.description}</Text>
       </Flex>
 
       <SubMenuModal
@@ -40,20 +49,6 @@ function LatestWork({ project }) {
         subModalIsOpen={subModalIsOpen}
         closeSubModal={closeSubModal}
       />
-    </GridItem>
-  ) : (
-    <GridItem>
-      <Link _hover={{ textDecoration: 'none' }} isExternal href={project.link}>
-        <Flex direction="column" align="center" py="4">
-          {project.image && (
-            <Image borderRadius="16px" maxH="150" src={project.image} alt="" />
-          )}
-          <Heading textAlign="center" fontSize="2xl">
-            {project.title}
-          </Heading>
-          <Text>{project.description}</Text>
-        </Flex>
-      </Link>
     </GridItem>
   );
 }

@@ -36,13 +36,15 @@ function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
   const [isError, setIsError] = useState(false);
 
   async function handleDelete(title) {
-    await fetch(`${API_URL}/api/v1/project/` + title, {
-      method: 'DELETE',
-    });
+    if (window.confirm('Are you sure?')) {
+      await fetch(`${API_URL}/api/v1/project/` + title, {
+        method: 'DELETE',
+      });
 
-    closeSubModal();
+      closeSubModal();
 
-    window.location.reload();
+      window.location.reload();
+    }
   }
 
   return (
