@@ -9,7 +9,9 @@ import Image from 'next/image';
 function Main({ project }) {
   return (
     <Flex px={[4, 4, 8, 8]} direction="column" align="center" gap={2}>
-      <Heading textAlign="center">{project.title}</Heading>
+      <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+        {project.title}
+      </Text>
       <Flex direction={['column', 'row', 'row', 'row']} pt={{ base: 0, sm: 4 }}>
         <Flex
           flex={['100', '40', '30', '40']}
@@ -20,7 +22,11 @@ function Main({ project }) {
           <Text fontSize={['lg', 'lg', 'xl', 'xl']} textAlign="center">
             {project.description}
           </Text>
-          <Link isExternal href={project.link}>
+          <Link
+            isExternal
+            href={project.link}
+            _hover={{ textDecoration: 'none' }}
+          >
             <Text fontWeight="bold" fontSize="xl" color="blue">
               Visit Project
             </Text>

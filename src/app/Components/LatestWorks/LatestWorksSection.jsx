@@ -17,7 +17,7 @@ export default async function LatestWorksSection() {
   const projects = await getData();
   return (
     <div>
-      <LatestWorks projects={projects} />
+      <LatestWorks projects={projects.slice(0, 4)} />
     </div>
   );
 }

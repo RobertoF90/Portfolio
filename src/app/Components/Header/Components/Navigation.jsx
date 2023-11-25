@@ -22,7 +22,7 @@ function Navigation() {
 
   const mobile = useBreakpointValue({
     base: true,
-    sm: true,
+    sm: false,
     md: false,
     lg: false,
   });
@@ -47,35 +47,28 @@ function Navigation() {
       {mobile ? (
         <Menu>
           <MenuButton
-            display={['flex', 'flex', 'none', 'none']}
+            display={['flex', 'none', 'none', 'none']}
             as={IconButton}
             aria-label="Opzioni"
             icon={<HamburgerIcon />}
           />
-          <MenuList>
-            <Link href="/websites">
-              <MenuItem>Websites</MenuItem>
-            </Link>
+          <MenuList zIndex={10}>
             <Link href="/projects">
-              <MenuItem>Web Apps</MenuItem>
+              <MenuItem>Projects</MenuItem>
             </Link>
-
             <Link href="/">
               <MenuItem>Get in Touch</MenuItem>
             </Link>
           </MenuList>
         </Menu>
       ) : (
-        <Box>
+        <Box display={['none', 'flex', 'flex', 'flex']}>
           <Flex gap="4">
-            <Link href="/websites">
+            <Link href="/projects">
               <Button>
-                <Text>Websites</Text>
+                <Text>Projects</Text>
               </Button>
             </Link>
-            <Button>
-              <Text>Web Apps</Text>
-            </Button>
             <Button>
               <Text>Get in Touch</Text>
             </Button>
