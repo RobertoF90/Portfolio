@@ -2,15 +2,18 @@ import React from 'react';
 import Navigation from './../Components/Header/Components/Navigation';
 import Dashboard from './Components/Dashboard/Dashboard';
 
-import { API_URL } from './../utils';
+import { connectToDatabase } from '@/utils/connectMongo';
 
 async function getData() {
-  //   setLoading(true);
-
-  const res = await fetch(`${API_URL}/api/v1/project`);
-  //   setLoading(false);
-
-  return res.json();
+  try {
+    const client = await connectToDatabase();
+    const db = client.db('test');
+    const items = await db.collection('projects').find({}).toArray();
+    const response = JSON.parse(JSON.stringify(items));
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function page() {

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, React } from 'react';
+import { useState, React } from 'react';
 
 import LatestWork from './Components/LatestWork';
 
@@ -9,10 +9,9 @@ import AddNewProjectModal from './Modals/AddNewProjectModal';
 
 import { useSession } from 'next-auth/react';
 
-import { API_URL } from '../../utils';
-
 function LatestWorks({ projects }) {
   const { data } = useSession();
+
   const [loading, setLoading] = useState(false);
   const [addModalIsOpen, setaddIsOpen] = useState(false);
 
