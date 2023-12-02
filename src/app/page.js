@@ -4,12 +4,14 @@ import Header from './Components/Header/Header';
 import LatestWorks from './Components/LatestWorks/LatestWorks';
 import GetInTouch from './Components/GetInTouch/GetInTouch';
 import Footer from './Components/Footer';
-import axios from 'axios';
+import { connectToDatabase } from '@/utils/connectMongo';
 
 async function getData() {
-  const response = await fetch('http://localhost:3000/api/projects');
-  const data = await response.json();
-  return data;
+  const client = await connectToDatabase();
+  const db = client.db('test');
+  const items = await db.collection('projects').find({}).toArray();
+  const data = Response.json(items);
+  return data.json();
 }
 
 async function page() {
