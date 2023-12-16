@@ -3,22 +3,21 @@ import { React } from 'react';
 import Header from './Components/Header/Header';
 import LatestWorks from './Components/LatestWorks/LatestWorks';
 import GetInTouch from './Components/GetInTouch/GetInTouch';
-import Footer from './Components/Footer';
-import { connectToDatabase } from '@/utils/connectMongo';
+
+import { API_URL } from './utils';
 
 async function getData() {
-  const res = await fetch('http://localhost:3000/api/projects');
+  const res = await fetch(`${API_URL}/api/projects`);
   const data = await res.json();
   return data;
 }
 
 async function page() {
   const projects = await getData();
-  // console.log(projects);
   return (
     <div>
       <Header />
-      <LatestWorks projects={projects} />
+      <LatestWorks projects={projects.slice(0, 4)} />
       <GetInTouch />
     </div>
   );
