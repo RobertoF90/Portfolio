@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import Navigation from './Components/Navigation';
+import Navigation from '../Navigation';
 
 import Image from 'next/image';
 
@@ -12,8 +12,6 @@ import SocialIcon from './Components/SocialIcon';
 function Header() {
   return (
     <Box>
-      <Navigation />
-
       <Flex
         py={{ base: '2', md: '6' }}
         direction={{ base: 'column', md: 'row' }}

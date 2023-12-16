@@ -1,12 +1,24 @@
 import { connectToDatabase } from '@/utils/connectMongo';
 
-export const dynamic = 'force-dynamic';
+const { storage } = require('./../storage/storage');
+const multer = require('multer');
+const upload = multer({ storage });
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+import Project from '@/app/models/project';
+
 export async function GET(request) {
   try {
-    const client = await connectToDatabase();
-    const db = client.db('test');
-    const items = await db.collection('projects').find({}).toArray();
-    return Response.json(items);
+    await connectToDatabase();
+
+    const projects = await Project.find();
+
+    return Response.json(projects.reverse().slice(0, 4));
   } catch (error) {
     console.log(error);
   }

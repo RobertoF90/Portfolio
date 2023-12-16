@@ -17,6 +17,7 @@ import {
   RadioGroup,
   Radio,
 } from '@chakra-ui/react';
+// import { POST } from '@/app/api/projects/route';
 
 ReactModal.setAppElement('#root');
 
@@ -36,7 +37,7 @@ const customStyles = {
   },
 };
 
-function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
+function AddNewProjectModal({ addModalIsOpen, closeAddModal, submitForm }) {
   const [type, setType] = useState('website');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -48,34 +49,42 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const submitForm = () => {
-    const formData = new FormData();
+  // async function submitForm(formData) {
+  //   'use server';
 
-    formData.append('type', type);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('image', image);
-    formData.append('link', link);
-    formData.append('stack', stack);
-    formData.append('version', version);
-    formData.append('published', published);
+  //   const file = formData.get('image');
 
-    fetch(`${API_URL}/api/v1/project`, {
-      method: 'POST',
-      mode: 'no-cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/JSON ',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: formData,
-    });
+  //   console.log(file);
+  //   // const formData = new FormData();
 
-    closeAddModal();
+  //   // formData.append('type', type);
+  //   // formData.append('title', title);
+  //   // formData.append('description', description);
+  //   // formData.append('image', image);
+  //   // formData.append('link', link);
+  //   // formData.append('stack', stack);
+  //   // formData.append('version', version);
+  //   // // formData.append('published', published);
+  //   // const o = {};
+  //   // formData.forEach((value, key) => (o[key] = value));
+  //   // console.log(o);
 
-    // window.location.reload();
-  };
+  //   // fetch(`/api/projects/new`, {
+  //   //   method: 'POST',
+  //   //   mode: 'no-cors', // no-cors, *cors, same-origin
+  //   //   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+  //   //   credentials: 'same-origin', // include, *same-origin, omit
+  //   //   headers: {
+  //   //     'Content-Type': 'application/JSON ',
+  //   //     // 'Content-Type': 'application/x-www-form-urlencoded',
+  //   //   },
+  //   //   body: JSON.stringify(o),
+  //   // });
+
+  //   closeAddModal();
+
+  //   // window.location.reload();
+  // }
 
   return (
     <>
@@ -86,145 +95,46 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
       >
         <CloseButton alignSelf="end" onClick={closeAddModal}></CloseButton>
 
-        {/* <FormControl
-          isInvalid={isError}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          gap={4}
-        >
-          <FormLabel>Type</FormLabel>
-          <RadioGroup onChange={setType}>
-            <Flex direction="column" gap="4">
-              <Radio value="website">Website</Radio>
-              <Radio value="application">Application</Radio>
-            </Flex>
-          </RadioGroup>
-
-          {isError && (
-            <FormErrorMessage fontSize="lg">
-              Please enter your title address.
-            </FormErrorMessage>
-          )}
-        </FormControl> */}
-
-        <FormControl
-          isInvalid={isError}
-          display="flex"
-          flexDir="column"
-          alignItems="center"
-        >
-          <FormLabel>Title</FormLabel>
-          <Input
-            onChange={(e) => {
-              setTitle(e.target.value);
-              setIsError(false);
-            }}
-            type="text"
-            name="title"
-          />
-          {isError && (
-            <FormErrorMessage fontSize="lg">
-              Please enter your title address.
-            </FormErrorMessage>
-          )}
-        </FormControl>
-        <FormControl
-          isInvalid={isError}
-          display="flex"
-          flexDir="column"
-          alignItems="center"
-        >
-          <FormLabel>Description</FormLabel>
-          <Input
-            onChange={(e) => {
-              setDescription(e.target.value);
-              setIsError(false);
-            }}
-            type="text"
-          />
-          {isError && (
-            <FormErrorMessage fontSize="lg">
-              Please enter your description.
-            </FormErrorMessage>
-          )}
-        </FormControl>
-
-        <FormControl
-          isInvalid={isError}
-          display="flex"
-          flexDir="column"
-          alignItems="center"
-        >
-          <FormLabel>Link</FormLabel>
-          <Input
-            onChange={(e) => {
-              setLink(e.target.value);
-              setIsError(false);
-            }}
-            type="text"
-          />
-          {isError && (
-            <FormErrorMessage fontSize="lg">
-              Please enter a link.
-            </FormErrorMessage>
-          )}
-        </FormControl>
-        <Flex gap="6">
+        <form action={submitForm}>
           <FormControl
             isInvalid={isError}
             display="flex"
             flexDir="column"
             alignItems="center"
           >
-            <FormLabel>Stack</FormLabel>
+            <FormLabel>Title</FormLabel>
             <Input
               onChange={(e) => {
-                setStack(e.target.value);
+                setTitle(e.target.value);
                 setIsError(false);
               }}
               type="text"
+              name="title"
             />
             {isError && (
               <FormErrorMessage fontSize="lg">
-                Please enter the stack.
+                Please enter your title address.
               </FormErrorMessage>
             )}
           </FormControl>
-
           <FormControl
             isInvalid={isError}
             display="flex"
             flexDir="column"
             alignItems="center"
           >
-            <FormLabel>Version</FormLabel>
+            <FormLabel>Description</FormLabel>
             <Input
               onChange={(e) => {
-                setVersion(e.target.value);
+                setDescription(e.target.value);
                 setIsError(false);
               }}
               type="text"
+              name="description"
             />
             {isError && (
               <FormErrorMessage fontSize="lg">
-                Please enter the version.
-              </FormErrorMessage>
-            )}
-          </FormControl>
-        </Flex>
-        <Flex gap="6">
-          <FormControl
-            isInvalid={isError}
-            display="flex"
-            flexDir="column"
-            alignItems="center"
-          >
-            <FormLabel>Published</FormLabel>
-            <Input onChange={setPublished} type="datetime-local" />
-            {isError && (
-              <FormErrorMessage fontSize="lg">
-                Please enter the version.
+                Please enter your description.
               </FormErrorMessage>
             )}
           </FormControl>
@@ -235,47 +145,131 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal }) {
             flexDir="column"
             alignItems="center"
           >
-            <FormLabel>Image</FormLabel>
+            <FormLabel>Link</FormLabel>
             <Input
               onChange={(e) => {
-                setImage(e.target.files[0]);
+                setLink(e.target.value);
                 setIsError(false);
               }}
-              type="file"
-              name="image"
+              type="text"
+              name="link"
             />
             {isError && (
               <FormErrorMessage fontSize="lg">
-                Please enter your image.
+                Please enter a link.
               </FormErrorMessage>
             )}
           </FormControl>
-        </Flex>
-
-        <FormControl width="auto">
-          {loading ? (
-            <Button
-              size="lg"
-              fontSize="lg"
-              color="#fff"
-              bg="#25a473"
-              _hover={{ bg: '#17845c' }}
-              isLoading
-              loadingText="Logging In"
-            />
-          ) : (
-            <Button
-              onClick={submitForm}
-              size="md"
-              bg="#25a473"
-              _hover={{ bg: '#17845c' }}
+          <Flex gap="6">
+            <FormControl
+              isInvalid={isError}
+              display="flex"
+              flexDir="column"
+              alignItems="center"
             >
-              <Text color="#fff" p="lg">
-                Submit
-              </Text>
-            </Button>
-          )}
-        </FormControl>
+              <FormLabel>Stack</FormLabel>
+              <Input
+                onChange={(e) => {
+                  setStack(e.target.value);
+                  setIsError(false);
+                }}
+                type="text"
+                name="stack"
+              />
+              {isError && (
+                <FormErrorMessage fontSize="lg">
+                  Please enter the stack.
+                </FormErrorMessage>
+              )}
+            </FormControl>
+
+            <FormControl
+              isInvalid={isError}
+              display="flex"
+              flexDir="column"
+              alignItems="center"
+            >
+              <FormLabel>Version</FormLabel>
+              <Input
+                onChange={(e) => {
+                  setVersion(e.target.value);
+                  setIsError(false);
+                }}
+                type="text"
+                name="version"
+              />
+              {isError && (
+                <FormErrorMessage fontSize="lg">
+                  Please enter the version.
+                </FormErrorMessage>
+              )}
+            </FormControl>
+          </Flex>
+          <Flex gap="6">
+            {/* <FormControl
+              isInvalid={isError}
+              display="flex"
+              flexDir="column"
+              alignItems="center"
+            >
+              <FormLabel>Published</FormLabel>
+              <Input onChange={setPublished} type="datetime-local" />
+              {isError && (
+                <FormErrorMessage fontSize="lg">
+                  Please enter the version.
+                </FormErrorMessage>
+              )}
+            </FormControl> */}
+
+            <FormControl
+              isInvalid={isError}
+              display="flex"
+              flexDir="column"
+              alignItems="center"
+            >
+              <FormLabel>Image</FormLabel>
+              <Input
+                onChange={(e) => {
+                  console.log(e.target.files[0]);
+                  setImage(e.target.files[0]);
+                  setIsError(false);
+                }}
+                type="file"
+                name="image"
+              />
+              {isError && (
+                <FormErrorMessage fontSize="lg">
+                  Please enter your image.
+                </FormErrorMessage>
+              )}
+            </FormControl>
+          </Flex>
+
+          <FormControl width="auto">
+            {loading ? (
+              <Button
+                size="lg"
+                fontSize="lg"
+                color="#fff"
+                bg="#25a473"
+                _hover={{ bg: '#17845c' }}
+                isLoading
+                loadingText="Logging In"
+              />
+            ) : (
+              <Button
+                type="submit"
+                size="md"
+                bg="#25a473"
+                _hover={{ bg: '#17845c' }}
+              >
+                <Text color="#fff" p="lg">
+                  Submit
+                </Text>
+              </Button>
+            )}
+          </FormControl>
+        </form>
       </ReactModal>
     </>
   );

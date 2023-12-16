@@ -7,21 +7,19 @@ import Footer from './Components/Footer';
 import { connectToDatabase } from '@/utils/connectMongo';
 
 async function getData() {
-  const client = await connectToDatabase();
-  const db = client.db('test');
-  const items = await db.collection('projects').find({}).toArray();
-  const data = Response.json(items);
-  return data.json();
+  const res = await fetch('http://localhost:3000/api/projects');
+  const data = await res.json();
+  return data;
 }
 
 async function page() {
   const projects = await getData();
+  // console.log(projects);
   return (
     <div>
       <Header />
       <LatestWorks projects={projects} />
       <GetInTouch />
-      <Footer />
     </div>
   );
 }

@@ -63,7 +63,7 @@ function Navigation({ projects, setSelected }) {
               _hover={{ transform: 'scale(1.05)' }}
             >
               <Image
-                src={project.image}
+                src={`/${project.image}`}
                 width={1349}
                 height={643}
                 alt={project.title}

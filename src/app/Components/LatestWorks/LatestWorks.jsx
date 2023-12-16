@@ -9,6 +9,8 @@ import AddNewProjectModal from './Modals/AddNewProjectModal';
 
 import { useSession } from 'next-auth/react';
 
+import submitForm from './Modals/actions/submitForm';
+
 function LatestWorks({ projects }) {
   const { data } = useSession();
 
@@ -75,6 +77,7 @@ function LatestWorks({ projects }) {
       <AddNewProjectModal
         addModalIsOpen={addModalIsOpen}
         closeAddModal={closeAddModal}
+        submitForm={submitForm}
         // setProjects={setProjects}
       />
     </Flex>
