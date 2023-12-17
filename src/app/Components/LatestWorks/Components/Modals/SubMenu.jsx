@@ -34,6 +34,8 @@ const customStyles = {
 
 import deleteProject from './actions/deleteProject';
 
+import editProject from './actions/editProject';
+
 function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
   const [editModalIsOpen, setEditIsOpen] = useState(false);
 
@@ -103,6 +105,7 @@ function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
         project={project}
         editModalIsOpen={editModalIsOpen}
         closeEditModal={closeEditModal}
+        editProject={editProject}
       />
     </>
   );
