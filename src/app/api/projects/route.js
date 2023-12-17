@@ -8,7 +8,7 @@ export async function GET(request) {
 
     const projects = await Project.find();
 
-    return Response.json(projects.reverse());
+    return Response.json(projects);
   } catch (error) {
     console.log(error);
   }
