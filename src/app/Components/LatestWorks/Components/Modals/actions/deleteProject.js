@@ -1,13 +1,12 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { API_URL } from '@/app/utils';
 
-export default async function submitForm(formData) {
+export default async function deleteProject(title) {
   try {
-    const response = await fetch(`${API_URL}/api/projects/new`, {
-      method: 'POST',
-      body: formData,
+    const response = await fetch(`http://localhost:3000/api/projects/`, {
+      method: 'DELETE',
+      body: JSON.stringify(title),
     });
     const data = await response.json();
     revalidatePath('/');

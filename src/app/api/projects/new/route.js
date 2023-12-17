@@ -1,26 +1,7 @@
 import Project from '@/app/models/project';
 
-const multer = require('multer');
-
 import path from 'path';
 import { writeFile } from 'fs/promises';
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: './public/uploads',
-    filename: (req, file, cb) => {
-      cb(
-        null,
-        `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-      );
-    },
-  }),
-});
 
 export async function POST(req, res) {
   try {
@@ -36,17 +17,22 @@ export async function POST(req, res) {
       console.log('Error occured ', error);
     }
 
-    const project = await Project.create({
-      title: formdata.get('title'),
-      description: formdata.get('description'),
-      image: filename,
-      link: formdata.get('link'),
-      stack: formdata.get('stack'),
-      published: formdata.get('published'),
-      version: formdata.get('version'),
-    });
-
-    return Response.json(formdata);
+    try {
+      const project = await Project.create({
+        title: formdata.get('title'),
+        description: formdata.get('description'),
+        image: filename,
+        link: formdata.get('link'),
+        stack: formdata.get('stack'),
+        published: formdata.get('published'),
+        version: formdata.get('version'),
+      });
+      console.log('successfully uploaded');
+      return Response.json({ message: 'upload successfull' });
+    } catch (error) {
+      console.log(error);
+      return Response.json(error);
+    }
   } catch (error) {
     console.log(error.message);
   }

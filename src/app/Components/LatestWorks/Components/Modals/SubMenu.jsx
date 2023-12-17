@@ -2,8 +2,6 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import { useState } from 'react';
 
-import { API_URL } from '@/app/utils';
-
 import {
   CloseButton,
   Flex,
@@ -34,6 +32,8 @@ const customStyles = {
   },
 };
 
+import deleteProject from './actions/deleteProject';
+
 function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
   const [editModalIsOpen, setEditIsOpen] = useState(false);
 
@@ -48,13 +48,14 @@ function SubMenuModal({ project, subModalIsOpen, closeSubModal }) {
 
   async function handleDelete(title) {
     if (window.confirm('Are you sure?')) {
-      await fetch(`${API_URL}/api/v1/project/` + title, {
-        method: 'DELETE',
-      });
+      try {
+        const res = await deleteProject(title);
 
-      closeSubModal();
-
-      window.location.reload();
+        closeSubModal();
+        console.log(res.message);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
