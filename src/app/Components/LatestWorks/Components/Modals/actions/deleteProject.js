@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 
 export default async function deleteProject(title) {
   try {
-    const response = await fetch(`http://localhost:3000/api/projects/`, {
+    const response = await fetch(`${process.env.API_URL}/api/projects/`, {
       method: 'DELETE',
       body: JSON.stringify(title),
     });

@@ -5,7 +5,7 @@ import { API_URL } from '@/app/utils';
 
 export default async function submitForm(formData) {
   try {
-    const response = await fetch(`${API_URL}/api/projects/new`, {
+    const response = await fetch(`${process.env.API_URL}/api/projects/new`, {
       method: 'POST',
       body: formData,
     });
