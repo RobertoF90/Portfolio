@@ -15,7 +15,7 @@ async function page() {
   return (
     <div>
       <Header />
-      <LatestWorks projects={projects.reverse().slice(0, 4)} />
+      <LatestWorks projects={projects.slice(0, 4)} />
       <GetInTouch />
     </div>
   );
