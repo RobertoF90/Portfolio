@@ -1,10 +1,11 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { NEXT_URL } from '@/app/utils';
 
 export default async function deleteProject(title) {
   try {
-    const response = await fetch(`${process.env.API_URL}/api/projects/`, {
+    const response = await fetch(`${NEXT_URL}/api/projects/`, {
       method: 'DELETE',
       body: JSON.stringify(title),
     });

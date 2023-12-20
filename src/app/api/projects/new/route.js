@@ -18,15 +18,15 @@ export async function POST(req, res) {
     }
 
     try {
-      // const project = await Project.create({
-      //   title: formdata.get('title'),
-      //   description: formdata.get('description'),
-      //   image: filename,
-      //   link: formdata.get('link'),
-      //   stack: formdata.get('stack'),
-      //   published: formdata.get('published'),
-      //   version: formdata.get('version'),
-      // });
+      const project = await Project.create({
+        title: formdata.get('title'),
+        description: formdata.get('description'),
+        image: filename,
+        link: formdata.get('link'),
+        stack: formdata.get('stack'),
+        published: formdata.get('published'),
+        version: formdata.get('version'),
+      });
       console.log('successfully uploaded');
       return Response.json({ message: 'upload successfull' });
     } catch (error) {

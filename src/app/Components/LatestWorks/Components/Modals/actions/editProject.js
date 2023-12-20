@@ -1,12 +1,13 @@
 'use server';
 
+import { NEXT_URL } from '@/app/utils';
 import { revalidatePath } from 'next/cache';
 
 export default async function editProject(formData, title) {
   try {
     console.log(formData);
     const response = await fetch(
-      `${process.env.API_URL}/api/projects?title=${title}`,
+      `${NEXT_URL}/api/projects?title=${title}`,
       {
         method: 'PUT',
         body: formData,

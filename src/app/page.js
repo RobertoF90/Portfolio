@@ -4,8 +4,10 @@ import Header from './Components/Header/Header';
 import LatestWorks from './Components/LatestWorks/LatestWorks';
 import GetInTouch from './Components/GetInTouch/GetInTouch';
 
+import { NEXT_URL } from './utils';
+
 async function getData() {
-  const res = await fetch(`${process.env.API_URL}/api/projects`);
+  const res = await fetch(`${NEXT_URL}/api/projects`);
   const data = await res.json();
   return data;
 }
