@@ -38,7 +38,7 @@ function AddNewProjectModal({ addModalIsOpen, closeAddModal, submitForm }) {
   const submitFormFunction = async function (formData) {
     try {
       const res = await submitForm(formData);
-      closeAddModal();
+      // closeAddModal();
       console.log(res.message);
     } catch (error) {
       console.log(error);

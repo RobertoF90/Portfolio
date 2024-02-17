@@ -36,7 +36,7 @@ function Main({ project }) {
         </Flex>
         <Flex flex={{ base: '100', sm: '50', md: '60' }} py={[2, 0]}>
           <Image
-            src={`/${project.image}`}
+            src={project.image}
             width={1349}
             height={643}
             alt="image"

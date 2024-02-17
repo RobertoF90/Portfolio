@@ -5,7 +5,7 @@ import { Flex, Text } from '@chakra-ui/react';
 
 function Footer() {
   return (
-    <Flex py="2" justify="center" borderTop="1px solid #000">
+    <Flex mt="2" py="2" justify="center" borderTop="1px solid #000">
       <Text textAlign="center" fontSize="lg">
         {' '}
         &copy; 2023 Roberto Franco

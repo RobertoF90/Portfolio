@@ -58,12 +58,12 @@ function Navigation({ projects, setSelected }) {
         {projects.map((project, i) => (
           <swiper-slide key={i}>
             <Box
-              py="8"
+              py="4"
               transition="all 0.1s"
               _hover={{ transform: 'scale(1.05)' }}
             >
               <Image
-                src={`/${project.image}`}
+                src={project.image}
                 width={1349}
                 height={643}
                 alt={project.title}

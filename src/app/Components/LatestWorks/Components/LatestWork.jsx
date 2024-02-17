@@ -33,7 +33,7 @@ function LatestWork({ project }) {
             <Image
               width={1920}
               height={1080}
-              src={`/${project.image}`}
+              src={project.image}
               alt="Project image"
             />
           </Box>
