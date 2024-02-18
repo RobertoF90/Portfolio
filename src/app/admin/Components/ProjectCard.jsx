@@ -23,6 +23,7 @@ import Link from 'next/link';
 export default function ProjectCard({ project, handleDelete }) {
   return (
     <Card
+      w="100%"
       my="2"
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"

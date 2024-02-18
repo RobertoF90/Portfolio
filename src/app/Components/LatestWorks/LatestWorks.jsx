@@ -7,13 +7,9 @@ import { Button, Text, Grid, Flex, Heading, Link } from '@chakra-ui/react';
 
 import AddNewProjectModal from './Modals/AddNewProjectModal';
 
-import { useSession } from 'next-auth/react';
-
 import submitForm from './Modals/actions/submitForm';
 
 function LatestWorks({ projects }) {
-  const { data } = useSession();
-
   const [loading, setLoading] = useState(false);
   const [addModalIsOpen, setaddIsOpen] = useState(false);
 
@@ -37,11 +33,7 @@ function LatestWorks({ projects }) {
       ) : (
         <Flex direction="column" align="center">
           <Heading>Latest Works</Heading>
-          {data && (
-            <Button mt="4" onClick={openAddModal}>
-              <Text>Add New</Text>
-            </Button>
-          )}
+
           <Grid
             py="6"
             px={{ base: '7.5%', sm: '15%', md: '15%', lg: '20%' }}
@@ -49,27 +41,19 @@ function LatestWorks({ projects }) {
             gap="6"
             justifyItems="center"
           >
-            {data
-              ? projects.map((project, i) => (
-                  <LatestWork
-                    key={i}
-                    project={project}
-                    onClick={() => data && openSubModal()}
-                  />
-                ))
-              : projects.map((project, i) => (
-                  <Link
-                    key={i}
-                    isExternal
-                    href={project.link}
-                    _hover={{ cursor: 'pointer', textDecoration: 'none' }}
-                  >
-                    <LatestWork
-                      project={project}
-                      onClick={() => data && openSubModal()}
-                    />
-                  </Link>
-                ))}
+            {projects.map((project, i) => (
+              <Link
+                key={i}
+                isExternal
+                href={project.link}
+                _hover={{ cursor: 'pointer', textDecoration: 'none' }}
+              >
+                <LatestWork
+                  project={project}
+                  onClick={() => data && openSubModal()}
+                />
+              </Link>
+            ))}
           </Grid>
         </Flex>
       )}

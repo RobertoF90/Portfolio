@@ -1,4 +1,4 @@
-import Project from '@/app/models/project';
+import Project from '@/models/project';
 
 import path from 'path';
 import { writeFile } from 'fs/promises';

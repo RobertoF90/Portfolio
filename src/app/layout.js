@@ -11,20 +11,24 @@ export const metadata = {
 // app/layout.tsx
 import { Providers } from './providers';
 
-import AuthProvider from './context/AuthProvider';
+import AuthProvider from '@/context/AuthProvider';
+
+import styles from './styles.module.css';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthProvider>
-          <div id="root"></div>
-          <Providers>
-            <Navigation />
+        <div id="root"></div>
+        <Providers>
+          <div className={styles.ui}>
+            <AuthProvider>
+              <Navigation />
+            </AuthProvider>
             {children}
             <Footer />
-          </Providers>
-        </AuthProvider>
+          </div>
+        </Providers>
       </body>
     </html>
   );

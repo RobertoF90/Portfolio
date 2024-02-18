@@ -1,6 +1,6 @@
 'use server';
 
-import Project from '@/app/models/project';
+import Project from '@/models/project';
 import connectDB from '@/utils/database';
 
 import { NEXT_URL } from '@/app/utils';

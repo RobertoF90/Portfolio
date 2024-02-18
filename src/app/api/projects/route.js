@@ -1,4 +1,4 @@
-import Project from '@/app/models/project';
+import Project from '@/models/project';
 import connectDB from '@/utils/database';
 export async function GET(request) {
   try {

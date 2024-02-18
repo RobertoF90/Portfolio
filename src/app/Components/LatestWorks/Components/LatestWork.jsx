@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, React } from 'react';
-import { useSession } from 'next-auth/react';
 
 import { Box, Flex, Text, GridItem, Link, Heading } from '@chakra-ui/react';
 import SubMenuModal from './Modals/SubMenu';
@@ -9,7 +8,6 @@ import SubMenuModal from './Modals/SubMenu';
 import Image from 'next/image';
 
 function LatestWork({ project }) {
-  const { data } = useSession();
   const [subModalIsOpen, setSubIsOpen] = useState(false);
 
   function openSubModal() {
@@ -23,7 +21,6 @@ function LatestWork({ project }) {
     <GridItem>
       <Flex
         _hover={{ cursor: 'pointer', textDecoration: 'none' }}
-        onClick={data && openSubModal}
         direction="column"
         align="center"
         gap={2}
