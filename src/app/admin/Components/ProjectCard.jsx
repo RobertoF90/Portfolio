@@ -16,9 +16,9 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 
-// import convertDate from '../../../utils/convertDate';
+import convertDate from '@/utils/convertDate';
 
-// import DeleteButton from './DeleteButton';
+import DeleteButton from './buttons/DeleteButton';
 
 export default function ProjectCard({ project, handleDelete }) {
   return (
@@ -29,14 +29,9 @@ export default function ProjectCard({ project, handleDelete }) {
       overflow="hidden"
       variant="outline"
     >
-      <Image
-        width="240"
-        height="160"
-        src={project.image}
-        alt={project.imageAlt}
-      />
+      <Image width="240" height="160" src={project.image} alt="project image" />
 
-      <Stack>
+      <Stack w="100%">
         <CardBody>
           <Flex justify="space-between">
             <Flex flex="75%" direction="column">
@@ -46,7 +41,8 @@ export default function ProjectCard({ project, handleDelete }) {
               </Text>
             </Flex>
             <Flex flex="25%" direction="column">
-              Published: {project.version}
+              Published:{' '}
+              {project.published ? convertDate(project.published) : ''}
             </Flex>
           </Flex>
         </CardBody>
@@ -60,7 +56,7 @@ export default function ProjectCard({ project, handleDelete }) {
           <Button variant="solid" colorScheme="blue">
             Edit
           </Button>
-          {/* <DeleteButton slug={project.slug} /> */}
+          <DeleteButton slug={project.slug} />
         </CardFooter>
       </Stack>
     </Card>

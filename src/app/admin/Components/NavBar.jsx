@@ -4,10 +4,12 @@ import { Flex, Button, Text } from '@chakra-ui/react';
 
 import Link from 'next/link';
 
-function NavBar() {
+function NavBar({ createForm, setCreateForm }) {
   return (
     <Flex justify="space-between" align="center" w="100%">
-      <Button colorScheme="green">Create New Project </Button>
+      <Button onClick={() => setCreateForm(!createForm)} colorScheme="green">
+        Create New Project
+      </Button>
 
       <Flex flexDirection="column" align="center" gap="2">
         <Text>You are logged in</Text>

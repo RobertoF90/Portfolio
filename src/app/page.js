@@ -7,7 +7,9 @@ import GetInTouch from './Components/GetInTouch/GetInTouch';
 import { NEXT_URL } from './utils';
 
 async function getData() {
-  const res = await fetch(`${NEXT_URL}/api/projects`);
+  const res = await fetch(`${NEXT_URL}/api/projects`, {
+    cache: 'no-store',
+  });
   const data = await res.json();
   return data;
 }

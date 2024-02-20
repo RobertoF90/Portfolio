@@ -1,7 +1,11 @@
-import { Schema, model, models } from 'mongoose';
+const mongoose = require('mongoose');
 
-const ProjectSchema = new Schema({
+const ProjectSchema = new mongoose.Schema({
   title: {
+    type: String,
+    required: true,
+  },
+  slug: {
     type: String,
     required: true,
   },
@@ -31,6 +35,5 @@ const ProjectSchema = new Schema({
   },
 });
 
-const Project = models.Project || model('Project', ProjectSchema);
-
-export default Project;
+module.exports =
+  mongoose.models.Project || mongoose.model('Project', ProjectSchema);

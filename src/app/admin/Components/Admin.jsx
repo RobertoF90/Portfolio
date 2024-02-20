@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
+import { useState } from 'react';
 
-import { Flex, Button, Text, Box } from '@chakra-ui/react';
+import { Flex, Button, Text, Box, Grid, GridItem } from '@chakra-ui/react';
 
 import ProjectCard from './ProjectCard';
 
@@ -10,22 +11,29 @@ import { redirect } from 'next/navigation';
 import NavBar from './NavBar';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
+import CreateProjectForm from './CreateProjectForm';
 
 function Admin({ projects }) {
   const { data, status } = useSession();
 
-  return (
-    <Flex h="100%" p="4">
-      {data ? (
-        <Flex w="100%" direction="column" align="center">
-          <NavBar />
+  const [createForm, setCreateForm] = useState(false);
 
-          <Flex w="100%">
-            {projects.map((project, i) => (
-              <ProjectCard key={i} project={project} />
-            ))}
-          </Flex>
-        </Flex>
+  return (
+    <Box>
+      {data ? (
+        <Grid p="4" h="100%" gridTemplateRows="10fr 90fr">
+          <GridItem>
+            <NavBar createForm={createForm} setCreateForm={setCreateForm} />
+            {createForm && <CreateProjectForm />}
+          </GridItem>
+          <GridItem>
+            <Flex w="100%" h="100%" direction="column">
+              {projects.map((project, i) => (
+                <ProjectCard key={i} project={project} />
+              ))}
+            </Flex>
+          </GridItem>
+        </Grid>
       ) : status === 'loading' ? (
         <Flex></Flex>
       ) : (
@@ -34,7 +42,7 @@ function Admin({ projects }) {
           <Button onClick={() => signIn()}>Sign In</Button>
         </Flex>
       )}
-    </Flex>
+    </Box>
   );
 }
 

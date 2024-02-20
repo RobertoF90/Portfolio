@@ -5,21 +5,8 @@ import LatestWork from './Components/LatestWork';
 
 import { Button, Text, Grid, Flex, Heading, Link } from '@chakra-ui/react';
 
-import AddNewProjectModal from './Modals/AddNewProjectModal';
-
-import submitForm from './Modals/actions/submitForm';
-
 function LatestWorks({ projects }) {
   const [loading, setLoading] = useState(false);
-  const [addModalIsOpen, setaddIsOpen] = useState(false);
-
-  function openAddModal() {
-    setaddIsOpen(true);
-  }
-
-  function closeAddModal() {
-    setaddIsOpen(false);
-  }
 
   return (
     <Flex
@@ -48,22 +35,12 @@ function LatestWorks({ projects }) {
                 href={project.link}
                 _hover={{ cursor: 'pointer', textDecoration: 'none' }}
               >
-                <LatestWork
-                  project={project}
-                  onClick={() => data && openSubModal()}
-                />
+                <LatestWork project={project} />
               </Link>
             ))}
           </Grid>
         </Flex>
       )}
-
-      <AddNewProjectModal
-        addModalIsOpen={addModalIsOpen}
-        closeAddModal={closeAddModal}
-        submitForm={submitForm}
-        // setProjects={setProjects}
-      />
     </Flex>
   );
 }

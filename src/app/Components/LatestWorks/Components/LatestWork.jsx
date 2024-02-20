@@ -3,20 +3,10 @@
 import { useState, React } from 'react';
 
 import { Box, Flex, Text, GridItem, Link, Heading } from '@chakra-ui/react';
-import SubMenuModal from './Modals/SubMenu';
 
 import Image from 'next/image';
 
 function LatestWork({ project }) {
-  const [subModalIsOpen, setSubIsOpen] = useState(false);
-
-  function openSubModal() {
-    setSubIsOpen(true);
-  }
-  function closeSubModal() {
-    setSubIsOpen(false);
-  }
-
   return (
     <GridItem>
       <Flex
@@ -40,12 +30,6 @@ function LatestWork({ project }) {
         </Heading>
         <Text textAlign="center">{project.description}</Text>
       </Flex>
-
-      <SubMenuModal
-        project={project}
-        subModalIsOpen={subModalIsOpen}
-        closeSubModal={closeSubModal}
-      />
     </GridItem>
   );
 }

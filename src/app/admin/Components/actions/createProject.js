@@ -3,23 +3,22 @@
 import Project from '@/models/project';
 import connectDB from '@/utils/database';
 
-import { NEXT_URL } from '@/app/utils';
 import getFormImages from '@/utils/getFormImages';
 import { revalidatePath } from 'next/cache';
 
-export default async function submitForm(formData) {
+export default async function createProject(formData) {
   try {
     // console.log(formData);
     const { uploadedImage } = await getFormImages(formData);
     await connectDB();
 
-    const project = await Project.create({
+    await Project.create({
       title: formData.get('title'),
+      slug: formData.get('title').toLowerCase().split(' ').join('-'),
       description: formData.get('description'),
       image: uploadedImage.secure_url,
       link: formData.get('link'),
       stack: formData.get('stack'),
-      published: formData.get('published'),
       version: formData.get('version'),
     });
 
