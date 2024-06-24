@@ -19,7 +19,7 @@ function LatestWorks({ projects }) {
         <Text>LOADING</Text>
       ) : (
         <Flex direction="column" align="center">
-          <Heading>Latest Works</Heading>
+          <Heading>Projects</Heading>
 
           <Grid
             py="6"

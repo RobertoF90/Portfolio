@@ -8,7 +8,7 @@ function Footer() {
     <Flex mt="2" py="2" justify="center" borderTop="1px solid #000">
       <Text textAlign="center" fontSize="lg">
         {' '}
-        &copy; 2023 Roberto Franco
+        &copy; 2024 Roberto Franco
       </Text>
     </Flex>
   );

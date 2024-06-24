@@ -20,7 +20,7 @@ async function page() {
     <div>
       <Header />
       <LatestWorks projects={projects} />
-      <GetInTouch />
+      {/* <GetInTouch /> */}
     </div>
   );
 }
