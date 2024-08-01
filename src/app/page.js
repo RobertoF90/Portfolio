@@ -1,7 +1,7 @@
 import { React } from 'react';
 
-import Header from './ui/home/Header/Header';
-import LatestWorks from './ui/home/LatestWorks/LatestWorks';
+import Header from './ui/home/Header';
+import Projects from './ui/home/Projects';
 import { getData } from '@/lib/data';
 
 async function page() {
@@ -9,7 +9,7 @@ async function page() {
   return (
     <div>
       <Header />
-      <LatestWorks projects={projects} />
+      <Projects projects={projects} />
     </div>
   );
 }

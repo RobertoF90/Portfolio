@@ -7,7 +7,7 @@ import { Box, Container, Flex, Text, Link } from '@chakra-ui/react';
 import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import SocialIcon from './SocialIcon';
 
-import profilePicture from './../img/profile-picture.jpeg';
+import profilePicture from '@/app/ui/home/img/profile-picture.jpeg';
 
 function Header() {
   return (

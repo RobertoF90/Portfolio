@@ -1,11 +1,11 @@
 'use client';
 import { useState, React } from 'react';
 
-import LatestWork from './LatestWork';
+import ProjectCard from './ProjectCard';
 
 import { Button, Text, Grid, Flex, Heading, Link } from '@chakra-ui/react';
 
-function LatestWorks({ projects }) {
+function Projects({ projects }) {
   const [loading, setLoading] = useState(false);
 
   return (
@@ -35,7 +35,7 @@ function LatestWorks({ projects }) {
                 href={project.link}
                 _hover={{ cursor: 'pointer', textDecoration: 'none' }}
               >
-                <LatestWork project={project} />
+                <ProjectCard project={project} />
               </Link>
             ))}
           </Grid>
@@ -45,4 +45,4 @@ function LatestWorks({ projects }) {
   );
 }
 
-export default LatestWorks;
+export default Projects;

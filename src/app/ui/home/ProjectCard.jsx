@@ -6,7 +6,7 @@ import { Box, Flex, Text, GridItem, Link, Heading } from '@chakra-ui/react';
 
 import Image from 'next/image';
 
-function LatestWork({ project }) {
+function ProjectCard({ project }) {
   return (
     <GridItem>
       <Flex
@@ -22,6 +22,7 @@ function LatestWork({ project }) {
               height={1080}
               src={project.image}
               alt="Project image"
+              priority
             />
           </Box>
         )}
@@ -34,4 +35,4 @@ function LatestWork({ project }) {
   );
 }
 
-export default LatestWork;
+export default ProjectCard;

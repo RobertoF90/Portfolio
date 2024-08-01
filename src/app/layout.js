@@ -1,5 +1,5 @@
 import './globals.css';
-
+import { Analytics } from '@vercel/analytics/react';
 import Footer from './ui/Footer';
 
 export const metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div id="root"></div>
+        <Analytics />
         <Providers>
           <div className={styles.ui}>
             {children}
