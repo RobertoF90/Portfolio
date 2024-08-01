@@ -12,7 +12,7 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-import createProject from './actions/createProject';
+import createProject from '../../admin/actions/createProject';
 import SubmitButton from './buttons/SubmitButton';
 
 function CreateProjectForm() {

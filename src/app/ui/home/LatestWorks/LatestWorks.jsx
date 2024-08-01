@@ -1,7 +1,7 @@
 'use client';
 import { useState, React } from 'react';
 
-import LatestWork from './Components/LatestWork';
+import LatestWork from './LatestWork';
 
 import { Button, Text, Grid, Flex, Heading, Link } from '@chakra-ui/react';
 

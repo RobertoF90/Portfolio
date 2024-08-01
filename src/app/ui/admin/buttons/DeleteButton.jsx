@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import { Flex, Button, Input } from '@chakra-ui/react';
-import deleteProject from '../actions/deleteProject';
+import deleteProject from '../../../admin/actions/deleteProject';
 
 function DeleteButton({ slug }) {
   const [confirm, setConfirm] = useState(false);

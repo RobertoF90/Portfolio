@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { NEXT_URL } from '../utils';
+import { NEXT_URL } from '../../lib/utils/nextUrl';
 
-import Admin from './Components/Admin';
+import Admin from '../ui/admin/Admin';
 async function getData() {
   const res = await fetch(`${NEXT_URL}/api/projects`, {
     cache: 'no-store',

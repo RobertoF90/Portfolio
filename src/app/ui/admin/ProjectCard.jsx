@@ -16,7 +16,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 
-import convertDate from '@/utils/convertDate';
+import convertDate from '@/lib/utils/convertDate';
 
 import DeleteButton from './buttons/DeleteButton';
 

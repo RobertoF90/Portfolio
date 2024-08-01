@@ -1,23 +1,23 @@
 'use client';
 import React from 'react';
 
-import Navigation from '../Navigation';
-
 import Image from 'next/image';
 
 import { Box, Container, Flex, Text, Link } from '@chakra-ui/react';
 import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import SocialIcon from './Components/SocialIcon';
+import SocialIcon from './SocialIcon';
+
+import profilePicture from './../img/profile-picture.jpeg';
 
 function Header() {
   return (
     <Box>
       <Flex
-        py={{ base: '2', md: '6' }}
-        direction={{ base: 'column', md: 'row' }}
+        py={2}
+        direction={['column', 'row']}
         align="center"
         justifyContent="center"
-        gap="2"
+        gap={2}
       >
         <Box textAlign="center">
           <Text fontSize="5xl" fontWeight="bold">
@@ -26,12 +26,7 @@ function Header() {
           <Text fontSize="xl">Full-Stack Web Developer</Text>
         </Box>
         <Box w="32" borderRadius="50%" overflow="hidden">
-          <Image
-            width={250}
-            height={259}
-            src="/img/profile picture.jpeg"
-            alt="Profile Picture of Roberto"
-          />
+          <Image src={profilePicture} alt="Profile Picture of Roberto" />
         </Box>
       </Flex>
       <Container maxW="4xl" textAlign="center">
@@ -43,7 +38,7 @@ function Header() {
         </Text>
       </Container>
 
-      <Flex justify="center" py="6" px="8">
+      <Flex justify="center" py={4} px="8">
         <Text
           textAlign="center"
           transition="all 0.2s"

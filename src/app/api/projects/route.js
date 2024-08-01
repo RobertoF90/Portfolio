@@ -1,20 +1,11 @@
 import Project from '@/models/project';
-import connectDB from '@/utils/database';
-export async function GET(request) {
+import connectDB from '@/lib/utils/database';
+export async function GET() {
   try {
     await connectDB();
     const projects = await Project.find();
+    console.log(projects);
     return Response.json(projects);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export async function DELETE(req) {
-  const title = await req.json();
-  try {
-    await Project.deleteOne({ title });
-    return Response.json({ message: 'project deleted' });
   } catch (error) {
     console.log(error);
   }

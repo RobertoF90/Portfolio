@@ -1,6 +1,6 @@
 import './globals.css';
 
-import Footer from './Components/Footer';
+import Footer from './ui/Footer';
 
 export const metadata = {
   title: 'Roberto Franco | Full Stack Web Developer',
