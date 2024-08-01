@@ -1,6 +1,6 @@
 import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { NEXT_URL } from '@/app/utils';
+import { NEXT_URL } from '@/lib/utils/nextUrl';
 
 export const authOptions = {
   providers: [

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 
-import connectDB from '@/utils/database';
+import connectDB from '@/lib/utils/database';
 import Project from '@/models/project';
 
 export default async function deleteProject(slug) {

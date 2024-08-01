@@ -1,6 +1,5 @@
-import connectDB from '../../../utils/database';
-import UserModel from '../../../models/UserModel';
-// api/user/
+import User from '@/models/user';
+import connectDB from '@/lib/utils/database';
 
 export const POST = async (req, { params }) => {
   const data = await req.json();
@@ -10,7 +9,7 @@ export const POST = async (req, { params }) => {
   try {
     await connectDB();
 
-    const user = await UserModel.findOne({
+    const user = await User.findOne({
       username: username,
       password: password,
     });

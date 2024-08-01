@@ -1,9 +1,9 @@
 'use server';
 
 import Project from '@/models/project';
-import connectDB from '@/utils/database';
+import connectDB from '@/lib/utils/database';
 
-import getFormImages from '@/utils/getFormImages';
+import getFormImages from '@/lib/utils/getFormImages';
 import { revalidatePath } from 'next/cache';
 
 export default async function createProject(formData) {

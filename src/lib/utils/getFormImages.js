@@ -1,4 +1,4 @@
-import cloudinary from './utils/cloudinary';
+import cloudinary from '@/lib/utils/cloudinary';
 import DataURIParser from 'datauri/parser';
 import path from 'path';
 
