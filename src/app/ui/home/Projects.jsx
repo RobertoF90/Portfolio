@@ -6,6 +6,8 @@ import ProjectCard from './ProjectCard';
 import { Button, Text, Grid, Flex, Heading, Link } from '@chakra-ui/react';
 
 function Projects({ projects }) {
+  console.log(projects);
+
   const [loading, setLoading] = useState(false);
 
   return (

@@ -6,6 +6,7 @@ import { getData } from '@/lib/data';
 
 async function page() {
   const projects = await getData();
+
   return (
     <div>
       <Header />
