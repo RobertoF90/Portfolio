@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NEXT_URL } from '../../lib/utils/nextUrl';
+import { NEXT_URL } from '@/lib/utils/nextUrl';
 
 import Admin from '../ui/admin/Admin';
 async function getData() {
