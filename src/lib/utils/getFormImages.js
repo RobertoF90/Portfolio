@@ -18,7 +18,7 @@ export default async function getFormImages(formData) {
             await image.arrayBuffer(image)
           ).content,
           {
-            folder: 'pabst',
+            folder: 'portfolio',
           }
         )
         .then((result) => result);

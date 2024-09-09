@@ -16,14 +16,25 @@ function ProjectCard({ project }) {
         gap={2}
       >
         {project.image && (
-          <Box borderRadius="16px" w="100%" overflow="hidden">
-            <Image
-              width={1920}
-              height={1080}
-              src={project.image}
-              alt="Project image"
-              priority
-            />
+          <Box
+            borderRadius="16px"
+            w="100%"
+            overflow="hidden"
+            position="relative"
+            maxH={250}
+          >
+            <Box
+              _hover={{ transform: 'translateY(calc(-100% + 250px))' }}
+              transition="all 10s ease-out"
+            >
+              <Image
+                width={1920}
+                height={1080}
+                src={project.image}
+                alt="Project image"
+                priority
+              />
+            </Box>
           </Box>
         )}
         <Heading textAlign="center" fontSize="xl">
