@@ -7,9 +7,15 @@ import Link from 'next/link';
 function NavBar({ createForm, setCreateForm }) {
   return (
     <Flex justify="space-between" align="center" w="100%">
-      <Button onClick={() => setCreateForm(!createForm)} colorScheme="green">
-        Create New Project
-      </Button>
+      <Flex gap={4}>
+        <Link href="/">
+          <Button>Home</Button>
+        </Link>
+
+        <Button onClick={() => setCreateForm(!createForm)} colorScheme="green">
+          Create New Project
+        </Button>
+      </Flex>
 
       <Flex flexDirection="column" align="center" gap="2">
         <Text>You are logged in</Text>

@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Flex, Button, Input } from '@chakra-ui/react';
 import deleteProject from '../../../admin/actions/deleteProject';
 
+import { DeleteIcon } from '@chakra-ui/icons';
+
 function DeleteButton({ slug }) {
   const [confirm, setConfirm] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -57,7 +59,7 @@ function DeleteButton({ slug }) {
           variant="solid"
           colorScheme="red"
         >
-          Delete
+          <DeleteIcon />
         </Button>
       )}
     </>

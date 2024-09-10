@@ -15,7 +15,7 @@ import {
 import createProject from '../../admin/actions/createProject';
 import SubmitButton from './buttons/SubmitButton';
 
-function CreateProjectForm({ setCreateForm }) {
+function EditProjectForm({ setEditForm }) {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -102,7 +102,7 @@ function CreateProjectForm({ setCreateForm }) {
           ) : (
             <Flex gap={4}>
               <SubmitButton />
-              <Button size="lg" onClick={() => setCreateForm(false)}>
+              <Button size="lg" onClick={() => setEditForm(false)}>
                 Close
               </Button>
             </Flex>
@@ -113,4 +113,4 @@ function CreateProjectForm({ setCreateForm }) {
   );
 }
 
-export default CreateProjectForm;
+export default EditProjectForm;

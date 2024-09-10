@@ -12,28 +12,41 @@ import NavBar from './NavBar';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import CreateProjectForm from './CreateProjectForm';
+import EditProjectForm from './EditProjectForm';
 
 function Admin({ projects }) {
   const { data, status } = useSession();
 
   const [createForm, setCreateForm] = useState(false);
+  const [editForm, setEditForm] = useState(false);
 
   return (
     <Box>
       {data ? (
-        <Grid p="4" h="100%" gridTemplateRows="10fr 90fr">
-          <GridItem>
+        <Flex direction="column" p="4">
+          <Box>
             <NavBar createForm={createForm} setCreateForm={setCreateForm} />
-            {createForm && <CreateProjectForm />}
-          </GridItem>
-          <GridItem>
-            <Flex w="100%" h="100%" direction="column">
+            {createForm && (
+              <CreateProjectForm
+                createForm={createForm}
+                setCreateForm={setCreateForm}
+              />
+            )}
+            {editForm && <EditProjectForm setEditForm={setEditForm} />}
+          </Box>
+          <Box>
+            <Flex w="100%" direction="column">
               {projects.map((project, i) => (
-                <ProjectCard key={i} project={project} />
+                <ProjectCard
+                  key={i}
+                  project={project}
+                  editForm={editForm}
+                  setEditForm={setEditForm}
+                />
               ))}
             </Flex>
-          </GridItem>
-        </Grid>
+          </Box>
+        </Flex>
       ) : status === 'loading' ? (
         <Flex></Flex>
       ) : (

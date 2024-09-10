@@ -11,6 +11,7 @@ import {
   Flex,
   Input,
   FormControl,
+  Box,
 } from '@chakra-ui/react';
 
 import Image from 'next/image';
@@ -19,8 +20,15 @@ import Link from 'next/link';
 import convertDate from '@/lib/utils/convertDate';
 
 import DeleteButton from './buttons/DeleteButton';
+import VisitButton from './buttons/VisitButton';
+import EditButton from './buttons/EditButton';
 
-export default function ProjectCard({ project, handleDelete }) {
+export default function ProjectCard({
+  project,
+  handleDelete,
+  editForm,
+  setEditForm,
+}) {
   return (
     <Card
       w="100%"
@@ -29,7 +37,14 @@ export default function ProjectCard({ project, handleDelete }) {
       overflow="hidden"
       variant="outline"
     >
-      <Image width="240" height="160" src={project.image} alt="project image" />
+      <Box maxH={200}>
+        <Image
+          width="240"
+          height="160"
+          src={project.image}
+          alt="project image"
+        />
+      </Box>
 
       <Stack w="100%">
         <CardBody>
@@ -48,14 +63,8 @@ export default function ProjectCard({ project, handleDelete }) {
         </CardBody>
 
         <CardFooter gap="4">
-          <Link href={project.link}>
-            <Button variant="solid" colorScheme="blue">
-              Visit
-            </Button>
-          </Link>
-          <Button variant="solid" colorScheme="blue">
-            Edit
-          </Button>
+          <VisitButton href={project.link} />
+          <EditButton editForm={editForm} setEditForm={setEditForm} />
           <DeleteButton slug={project.slug} />
         </CardFooter>
       </Stack>
