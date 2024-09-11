@@ -28,6 +28,7 @@ export default function ProjectCard({
   handleDelete,
   editForm,
   setEditForm,
+  setProjectToEdit,
 }) {
   return (
     <Card
@@ -64,7 +65,12 @@ export default function ProjectCard({
 
         <CardFooter gap="4">
           <VisitButton href={project.link} />
-          <EditButton editForm={editForm} setEditForm={setEditForm} />
+          <EditButton
+            project={project}
+            editForm={editForm}
+            setEditForm={setEditForm}
+            setProjectToEdit={setProjectToEdit}
+          />
           <DeleteButton slug={project.slug} />
         </CardFooter>
       </Stack>

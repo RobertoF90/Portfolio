@@ -101,7 +101,7 @@ function CreateProjectForm({ setCreateForm }) {
             />
           ) : (
             <Flex gap={4}>
-              <SubmitButton />
+              <SubmitButton text={'Creating'} />
               <Button size="lg" onClick={() => setCreateForm(false)}>
                 Close
               </Button>

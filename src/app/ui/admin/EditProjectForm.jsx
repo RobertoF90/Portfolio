@@ -12,16 +12,23 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-import createProject from '../../admin/actions/createProject';
+import editProject from '../../admin/actions/editProject';
 import SubmitButton from './buttons/SubmitButton';
 
-function EditProjectForm({ setEditForm }) {
+function EditProjectForm({ project, setEditForm }) {
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   return (
-    <form action={createProject}>
+    <form action={editProject}>
       <Flex p="4" direction="column" gap="2">
+        <Input
+          display="none"
+          type="text"
+          name="id"
+          defaultValue={project._id}
+          readOnly
+        />
         <FormControl
           isInvalid={isError}
           display="flex"
@@ -29,7 +36,12 @@ function EditProjectForm({ setEditForm }) {
           alignItems="center"
         >
           <FormLabel flex="25%">Title</FormLabel>
-          <Input flex="75%" type="text" name="title" />
+          <Input
+            flex="75%"
+            type="text"
+            name="title"
+            defaultValue={project.title}
+          />
           {isError && (
             <FormErrorMessage fontSize="lg">
               Please enter your title address.
@@ -38,7 +50,12 @@ function EditProjectForm({ setEditForm }) {
         </FormControl>
         <FormControl isInvalid={isError} display="flex" alignItems="center">
           <FormLabel flex="25%">Description</FormLabel>
-          <Input flex="75%" type="text" name="description" />
+          <Input
+            flex="75%"
+            type="text"
+            name="description"
+            defaultValue={project.description}
+          />
           {isError && (
             <FormErrorMessage fontSize="lg">
               Please enter your description.
@@ -48,7 +65,12 @@ function EditProjectForm({ setEditForm }) {
 
         <FormControl isInvalid={isError} display="flex" alignItems="center">
           <FormLabel flex="25%">Link</FormLabel>
-          <Input flex="75%" type="text" name="link" />
+          <Input
+            flex="75%"
+            type="text"
+            name="link"
+            defaultValue={project.link}
+          />
           {isError && (
             <FormErrorMessage fontSize="lg">
               Please enter a link.
@@ -58,7 +80,12 @@ function EditProjectForm({ setEditForm }) {
         <Flex gap="6">
           <FormControl isInvalid={isError} display="flex" alignItems="center">
             <FormLabel flex="25%">Stack</FormLabel>
-            <Input flex="75%" type="text" name="stack" />
+            <Input
+              flex="75%"
+              type="text"
+              name="stack"
+              defaultValue={project.stack}
+            />
             {isError && (
               <FormErrorMessage fontSize="lg">
                 Please enter the stack.
@@ -68,7 +95,12 @@ function EditProjectForm({ setEditForm }) {
 
           <FormControl isInvalid={isError} display="flex" alignItems="center">
             <FormLabel flex="25%">Version</FormLabel>
-            <Input flex="75%" type="text" name="version" />
+            <Input
+              flex="75%"
+              type="text"
+              name="version"
+              defaultValue={project.version}
+            />
             {isError && (
               <FormErrorMessage fontSize="lg">
                 Please enter the version.
@@ -86,6 +118,13 @@ function EditProjectForm({ setEditForm }) {
               </FormErrorMessage>
             )}
           </FormControl>
+          <Input
+            display="none"
+            type="text"
+            name="prevImage"
+            defaultValue={project.image}
+            readOnly
+          />
         </Flex>
 
         <FormControl display="flex" justifyContent="center" width="100%">
@@ -101,7 +140,7 @@ function EditProjectForm({ setEditForm }) {
             />
           ) : (
             <Flex gap={4}>
-              <SubmitButton />
+              <SubmitButton text={'Updating'} />
               <Button size="lg" onClick={() => setEditForm(false)}>
                 Close
               </Button>

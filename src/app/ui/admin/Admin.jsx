@@ -20,6 +20,8 @@ function Admin({ projects }) {
   const [createForm, setCreateForm] = useState(false);
   const [editForm, setEditForm] = useState(false);
 
+  const [projectToEdit, setProjectToEdit] = useState([]);
+
   return (
     <Box>
       {data ? (
@@ -32,7 +34,12 @@ function Admin({ projects }) {
                 setCreateForm={setCreateForm}
               />
             )}
-            {editForm && <EditProjectForm setEditForm={setEditForm} />}
+            {editForm && (
+              <EditProjectForm
+                project={projectToEdit}
+                setEditForm={setEditForm}
+              />
+            )}
           </Box>
           <Box>
             <Flex w="100%" direction="column">
@@ -42,6 +49,7 @@ function Admin({ projects }) {
                   project={project}
                   editForm={editForm}
                   setEditForm={setEditForm}
+                  setProjectToEdit={setProjectToEdit}
                 />
               ))}
             </Flex>

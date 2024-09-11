@@ -3,10 +3,6 @@ import DataURIParser from 'datauri/parser';
 import path from 'path';
 
 export default async function getFormImages(formData) {
-  // console.log(formData);
-
-  // const bgImage = formData.get('bgImage');
-  const image = formData.get('image');
   const parser = new DataURIParser();
 
   try {
@@ -24,7 +20,6 @@ export default async function getFormImages(formData) {
         .then((result) => result);
     }
     return {
-      // uploadedBgImage: await uploadImage(bgImage),
       uploadedImage: await uploadImage(image),
     };
   } catch (error) {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { Flex, Button, Input } from '@chakra-ui/react';
+import { Flex, Button } from '@chakra-ui/react';
 import deleteProject from '../../../admin/actions/deleteProject';
 
 import { DeleteIcon } from '@chakra-ui/icons';
@@ -17,8 +17,6 @@ function DeleteButton({ slug }) {
     setConfirm(false);
     setDeleting(false);
   };
-
-  console.log(slug);
 
   return (
     <>

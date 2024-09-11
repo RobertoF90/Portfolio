@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import { NEXT_URL } from '../../../../lib/utils/nextUrl';
 
-function SubmitButton() {
+function SubmitButton({ text }) {
   const { pending, data } = useFormStatus();
 
   return (
@@ -18,7 +18,7 @@ function SubmitButton() {
         bg="#25a473"
         _hover={{ bg: '#17845c' }}
         isLoading={pending}
-        loadingText="Creating New Page"
+        loadingText={text}
       >
         Submit
       </Button>
