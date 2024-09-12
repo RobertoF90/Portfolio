@@ -1,9 +1,6 @@
 'use client';
-
-import { useState, React } from 'react';
-
-import { Box, Flex, Text, GridItem, Link, Heading } from '@chakra-ui/react';
-
+import React from 'react';
+import { Box, Flex, Text, GridItem, Heading } from '@chakra-ui/react';
 import Image from 'next/image';
 
 function ProjectCard({ project }) {
@@ -21,11 +18,12 @@ function ProjectCard({ project }) {
             w="100%"
             overflow="hidden"
             position="relative"
-            maxH={250}
+            maxH={225}
           >
             <Box
               _hover={{ transform: 'translateY(calc(-100% + 250px))' }}
               transition="all 10s ease-out"
+              maxW={750}
             >
               <Image
                 width={1920}

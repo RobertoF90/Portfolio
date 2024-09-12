@@ -1,12 +1,9 @@
 'use client';
 import React from 'react';
-
 import Image from 'next/image';
-
-import { Box, Container, Flex, Text, Link } from '@chakra-ui/react';
+import { Box, Container, Flex, Text } from '@chakra-ui/react';
 import { FaGithub, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import SocialIcon from './SocialIcon';
-
 import profilePicture from '@/app/ui/home/img/profile-picture.jpeg';
 
 function Header() {
@@ -38,7 +35,7 @@ function Header() {
         </Text>
       </Container>
 
-      <Flex justify="center" py={4} px="8">
+      <Flex justify="center" py={2} px="8">
         <Text
           textAlign="center"
           transition="all 0.2s"

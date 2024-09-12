@@ -1,9 +1,7 @@
+'use client';
 import React from 'react';
 import { useFormStatus } from 'react-dom';
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
-import Link from 'next/link';
-
-import { NEXT_URL } from '../../../../lib/utils/nextUrl';
+import { Button } from '@chakra-ui/react';
 
 function SubmitButton({ text }) {
   const { pending, data } = useFormStatus();

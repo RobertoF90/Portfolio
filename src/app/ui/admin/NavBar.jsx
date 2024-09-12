@@ -18,7 +18,6 @@ function NavBar({ createForm, setCreateForm }) {
       </Flex>
 
       <Flex flexDirection="column" align="center" gap="2">
-        <Text>You are logged in</Text>
         <Link href="/api/auth/signout">
           <Button>Logout</Button>
         </Link>

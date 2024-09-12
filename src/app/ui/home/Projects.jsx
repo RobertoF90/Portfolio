@@ -13,7 +13,7 @@ function Projects({ projects }) {
       direction={{ base: 'column', lg: 'row' }}
       align="center"
       justify="center"
-      pt="6"
+      pt="2"
     >
       {loading ? (
         <Text>LOADING</Text>

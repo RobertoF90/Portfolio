@@ -1,10 +1,7 @@
 'use client';
-
 import React from 'react';
-
 import Link from 'next/link';
 import { Button } from '@chakra-ui/react';
-
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 function VisitButton({ href }) {

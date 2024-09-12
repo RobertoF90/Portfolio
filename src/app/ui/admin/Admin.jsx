@@ -25,7 +25,7 @@ function Admin({ projects }) {
   return (
     <Box>
       {data ? (
-        <Flex direction="column" p="4">
+        <Flex direction="column" p="4" gap={4}>
           <Box>
             <NavBar createForm={createForm} setCreateForm={setCreateForm} />
             {createForm && (

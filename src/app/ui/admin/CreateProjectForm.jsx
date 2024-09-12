@@ -4,14 +4,11 @@ import { useState } from 'react';
 import {
   Flex,
   Button,
-  Text,
   Input,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  Box,
 } from '@chakra-ui/react';
-
 import createProject from '../../admin/actions/createProject';
 import SubmitButton from './buttons/SubmitButton';
 

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Card,
   CardBody,
@@ -7,25 +6,17 @@ import {
   Stack,
   Heading,
   Text,
-  Button,
   Flex,
-  Input,
-  FormControl,
   Box,
 } from '@chakra-ui/react';
-
 import Image from 'next/image';
-import Link from 'next/link';
-
 import convertDate from '@/lib/utils/convertDate';
-
 import DeleteButton from './buttons/DeleteButton';
 import VisitButton from './buttons/VisitButton';
 import EditButton from './buttons/EditButton';
 
 export default function ProjectCard({
   project,
-  handleDelete,
   editForm,
   setEditForm,
   setProjectToEdit,
@@ -38,10 +29,10 @@ export default function ProjectCard({
       overflow="hidden"
       variant="outline"
     >
-      <Box maxH={200}>
+      <Box maxH={200} maxW={350}>
         <Image
-          width="240"
-          height="160"
+          width="1920"
+          height="1080"
           src={project.image}
           alt="project image"
         />
@@ -50,28 +41,34 @@ export default function ProjectCard({
       <Stack w="100%">
         <CardBody>
           <Flex justify="space-between">
-            <Flex flex="75%" direction="column">
+            <Flex direction="column">
               <Heading size="md">{project.title}</Heading>
               <Text py="2">
                 {project.description.replace(/<\/?[^>]+(>|$)/g, ' ')}
               </Text>
             </Flex>
-            <Flex flex="25%" direction="column">
+            <Flex direction="column">
               Published:{' '}
               {project.published ? convertDate(project.published) : ''}
             </Flex>
           </Flex>
         </CardBody>
 
-        <CardFooter gap="4">
-          <VisitButton href={project.link} />
-          <EditButton
-            project={project}
-            editForm={editForm}
-            setEditForm={setEditForm}
-            setProjectToEdit={setProjectToEdit}
-          />
-          <DeleteButton slug={project.slug} />
+        <CardFooter>
+          <Flex justify="space-between" w="100%">
+            <Flex gap="4">
+              <VisitButton href={project.link} />
+              <EditButton
+                project={project}
+                editForm={editForm}
+                setEditForm={setEditForm}
+                setProjectToEdit={setProjectToEdit}
+              />
+            </Flex>
+            <Box>
+              <DeleteButton slug={project.slug} />
+            </Box>
+          </Flex>
         </CardFooter>
       </Stack>
     </Card>
