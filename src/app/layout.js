@@ -10,6 +10,8 @@ export const metadata = {
 import { Providers } from './providers';
 
 import styles from './styles.module.css';
+import { ThemeProvider } from 'next-themes';
+import Navigation from './ui/Navigation';
 
 export default function RootLayout({ children }) {
   return (
@@ -17,10 +19,13 @@ export default function RootLayout({ children }) {
       <body>
         <Analytics />
         <Providers>
-          <div className={styles.ui}>
-            {children}
-            <Footer />
-          </div>
+          <ThemeProvider defaultTheme="system">
+            <div className={styles.ui}>
+              <Navigation />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </ThemeProvider>
         </Providers>
       </body>
     </html>

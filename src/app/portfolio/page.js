@@ -1,7 +1,7 @@
 import { React } from 'react';
 
 import { getData } from '@/lib/data';
-import Home from './ui/home/Home';
+import Portfolio from '@/app/ui/portfolio/Portfolio';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,7 +10,7 @@ async function page() {
 
   return (
     <div>
-      <Home projects={projects} />
+      <Portfolio projects={projects} />
     </div>
   );
 }
