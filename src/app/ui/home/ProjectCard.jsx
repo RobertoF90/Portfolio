@@ -18,7 +18,7 @@ function ProjectCard({ project }) {
             w="100%"
             overflow="hidden"
             position="relative"
-            h={[150, 125]}
+            h={[175, 125]}
           >
             <Box
               _hover={{ transform: 'translateY(calc(-100% + 250px))' }}

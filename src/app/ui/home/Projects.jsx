@@ -3,7 +3,7 @@ import { useState, React } from 'react';
 
 import ProjectCard from './ProjectCard';
 
-import { Text, Grid, Flex, Link } from '@chakra-ui/react';
+import { Text, Grid, Flex, Link, Container } from '@chakra-ui/react';
 
 function Projects({ projects }) {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,10 @@ function Projects({ projects }) {
         <Flex direction="column" align="center">
           <Grid
             py={4}
-            templateColumns={{ base: '1fr', sm: '1fr ', md: '1fr 1fr' }}
+            templateColumns={[
+              'repeat(1, minmax(0, 1fr))',
+              'repeat(2, minmax(0, 1fr))',
+            ]}
             gap="6"
             justifyItems="center"
           >

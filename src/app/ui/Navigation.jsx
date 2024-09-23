@@ -15,7 +15,7 @@ import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
 function Navigation() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme('dark');
   return (
     <Box background={(theme === 'dark' && '#20202380') || '#ffffff40'}>
       <Container p="2">

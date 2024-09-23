@@ -11,7 +11,7 @@ import HeadingSub from './HeadingSub';
 function Header() {
   return (
     <Box>
-      <Container maxW={['350px', '475px']} textAlign="justify">
+      <Container maxW={['sm', 'md']} textAlign="justify">
         <Flex
           pb={4}
           direction={['column', 'row']}

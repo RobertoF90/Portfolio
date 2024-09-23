@@ -14,7 +14,7 @@ function Home({ projects }) {
     <Flex direction="column" justify="space-between" pt={14}>
       <Header />
 
-      <Container py={4} maxW={['350px', '475px']} textAlign="justify">
+      <Container maxW={['sm', 'md']} py={4} w="100%" textAlign="justify">
         <HeadingSub text="Latest Works" />
         <Projects projects={projects.slice(0, 2)} />
         <ProjectsButton />
