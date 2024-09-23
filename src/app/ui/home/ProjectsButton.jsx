@@ -8,10 +8,10 @@ function ProjectsButton() {
   return (
     <Flex justify="center" py={4}>
       <Link href="/portfolio">
-        <Button>
-          <Flex align="center">
+        <Button colorScheme="blue">
+          <Flex align="center" gap={2}>
             <Text>Portfolio</Text>
-            <Icon as={MdOutlineKeyboardArrowRight} boxSize={6}></Icon>
+            <Icon as={MdOutlineKeyboardArrowRight} boxSize={5}></Icon>
           </Flex>
         </Button>
       </Link>

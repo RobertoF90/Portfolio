@@ -11,15 +11,15 @@ import HeadingSub from './HeadingSub';
 function Header() {
   return (
     <Box>
-      <Container maxW="550px" textAlign="justify">
+      <Container maxW={['350px', '475px']} textAlign="justify">
         <Flex
           pb={4}
           direction={['column', 'row']}
-          gap={2}
+          gap={4}
           align={'center'}
-          justify="center"
+          justify="space-between"
         >
-          <Box>
+          <Box alignSelf="baseline">
             <Text fontSize="3xl" fontWeight="bold">
               Roberto Franco
             </Text>
@@ -38,7 +38,8 @@ function Header() {
             />
           </Flex>
         </Flex>
-        <Text pb={4}>
+        <HeadingSub text={'Bio'} />
+        <Text pt={2} pb={4}>
           I&apos;m a full-stack developer based in Lecce (Italy) with a passion
           for languages and technology. I love all things tech related and enjoy
           expressing my creativity through the creation of web applications and

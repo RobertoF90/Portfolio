@@ -11,10 +11,10 @@ function Home({ projects }) {
   const [portfolio, setPortfolio] = useState(false);
 
   return (
-    <Flex direction="column" justify="space-between">
+    <Flex direction="column" justify="space-between" pt={14}>
       <Header />
 
-      <Container py={4} maxW="550px" textAlign="justify">
+      <Container py={4} maxW={['350px', '475px']} textAlign="justify">
         <HeadingSub text="Latest Works" />
         <Projects projects={projects.slice(0, 2)} />
         <ProjectsButton />

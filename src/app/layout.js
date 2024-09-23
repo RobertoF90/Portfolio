@@ -21,7 +21,9 @@ export default function RootLayout({ children }) {
         <Providers>
           <ThemeProvider defaultTheme="system">
             <div className={styles.ui}>
-              <Navigation />
+              <nav className={styles.nav}>
+                <Navigation />
+              </nav>
               <main>{children}</main>
               <Footer />
             </div>

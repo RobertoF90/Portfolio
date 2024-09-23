@@ -7,7 +7,7 @@ import HeadingSub from '../home/HeadingSub';
 function portfolio({ projects }) {
   return (
     <div>
-      <Container py={4} maxW="550px" textAlign="justify">
+      <Container pt={14} maxW={['325px', '475px']} textAlign="justify">
         <HeadingSub text="Works" />
         <Projects projects={projects} />
       </Container>
