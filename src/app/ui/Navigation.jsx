@@ -11,13 +11,14 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
-function Navigation() {
-  const { theme, setTheme } = useTheme('dark');
+import { useColorMode, useColorModeValue } from '@chakra-ui/react';
+
+function Navigation({ cookie }) {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Box background={(theme === 'dark' && '#20202380') || '#ffffff40'}>
+    <Box background={colorMode}>
       <Container p="2">
         <Flex align="center" justify="space-between">
           <Flex align="center">
@@ -31,21 +32,21 @@ function Navigation() {
           </Flex>
 
           <Flex align="right">
-            {(theme === 'dark' && (
+            {cookie && colorMode === 'light' ? (
               <Button
                 variant="ghost"
                 colorScheme="whiteAlpha.900"
-                onClick={() => setTheme('light')}
-              >
-                <Icon as={SunIcon} />
-              </Button>
-            )) || (
-              <Button
-                variant="ghost"
-                colorScheme="whiteAlpha.900"
-                onClick={() => setTheme('dark')}
+                onClick={toggleColorMode}
               >
                 <Icon as={MoonIcon} />
+              </Button>
+            ) : (
+              <Button
+                variant="ghost"
+                colorScheme="whiteAlpha.900"
+                onClick={toggleColorMode}
+              >
+                <Icon as={SunIcon} />
               </Button>
             )}
             {/* <Box>

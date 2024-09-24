@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { Box, Container, Flex, Text } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Text } from '@chakra-ui/react';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import SocialIcon from './SocialIcon';
@@ -11,7 +11,7 @@ import HeadingSub from './HeadingSub';
 function Header() {
   return (
     <Box>
-      <Container maxW={['sm', 'md']} textAlign="justify">
+      <Container maxW={['sm', 'lg']} textAlign="justify">
         <Flex
           pb={4}
           direction={['column', 'row']}
@@ -20,10 +20,10 @@ function Header() {
           justify="space-between"
         >
           <Box alignSelf="baseline">
-            <Text fontSize="3xl" fontWeight="bold">
+            <Heading as="h1" fontSize="4xl" fontWeight="bold">
               Roberto Franco
-            </Text>
-            <Text>Full-Stack Web Developer</Text>
+            </Heading>
+            <Text fontSize="lg">Full-Stack Web Developer</Text>
           </Box>
           <Flex
             align="center"
